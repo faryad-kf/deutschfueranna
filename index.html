@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F4F6FA">
 <title>Der Die Das – Artikeltrainer</title>
-<meta name="app-version" content="1.1">
+<meta name="app-version" content="1.1.1">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
@@ -164,7 +164,7 @@ textarea{width:100%;min-height:110px;border:1.5px solid var(--line);border-radiu
 <script>
 (function(){
 'use strict';
-const VERSION='1.1',BUILD='24.09.2026';
+const VERSION='1.1.1',BUILD='24.09.2026';
 
 /* ---------- Daten: Artikel | Wort | English | Українська ---------- */
 const CATS={
@@ -1118,7 +1118,7 @@ function viewPractice(){
     '<button class="chip '+(S.en?'on':'')+'" data-a="tr" data-v="en">English</button>'+
     '<button class="chip '+(S.uk?'on':'')+'" data-a="tr" data-v="uk">Українська</button></div></div>'+
     '<button class="btn gold" style="margin-top:14px" data-a="start">Runde starten: 10 Wörter</button>'+
-    '<p class="small">'+p.length+' Wörter in dieser Auswahl</p><p class="small" style="margin-top:4px">Version '+VERSION+' · '+BUILD+'</p>';
+    '<p class="small">'+p.length+' Wörter in dieser Auswahl</p><p class="small" style="margin-top:4px">Version '+VERSION+' · '+BUILD+'</p><p class="small" style="margin-top:4px">Made with love for Anna</p>';
 }
 function nounSize(w){const n=w.length;return n>=23?21:n>=19?25:n>=17?27:n>=15?31:n>=13?35:n>=11?39:44;}
 function viewQuestion(){
@@ -1328,7 +1328,7 @@ function viewProgress(){
   const hard=WORDS.filter(e=>S.w[e.id]&&S.w[e.id].w>0&&S.w[e.id].b<3).sort((a,b)=>S.w[b.id].w-S.w[a.id].w).slice(0,10);
   if(hard.length)h+='<div class="card" style="padding:6px 16px"><h3 style="margin:12px 0 2px">Schwierige Wörter</h3>'+hard.map(rowSimple).join('')+'</div>';
   h+='<div class="card rl"><h3>Version '+VERSION+' ('+BUILD+')</h3>'+
-    '<p><b>Fälle:</b> '+SENT.length+' Sätze von Hand geschrieben, mit wechselnden Verben und Präpositionen.</p>'+
+    '<p><b>1.1.1:</b> kleiner Gruß auf dem Startbildschirm.</p><p><b>Fälle:</b> '+SENT.length+' Sätze von Hand geschrieben, mit wechselnden Verben und Präpositionen.</p>'+
     '<p><b>Weiter:</b> Die Antwort bleibt stehen, bis du auf Weiter tippst.</p>'+
     '<p><b>Fortschritt:</b> zeigt geübte und sichere Wörter sowie die Fälle.</p>'+
     '<p><b>Wörter:</b> Einträge geprüft, einige Übersetzungen korrigiert.</p></div>';
