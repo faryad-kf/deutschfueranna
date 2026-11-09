@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F4F6FA">
 <title>Der Die Das – Artikeltrainer</title>
-<meta name="app-version" content="1.2">
+<meta name="app-version" content="1.3">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
@@ -179,6 +179,26 @@ h3 .flag{margin:0 2px;vertical-align:0}
 .sub:first-of-type{margin-top:12px}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .flag{box-shadow:0 0 0 1px rgba(255,255,255,.25)}}
 :root[data-theme="dark"] .flag{box-shadow:0 0 0 1px rgba(255,255,255,.25)}
+
+/* v1.3 */
+.seg4 button{font-size:13.5px;padding:10px 2px}
+.cta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;border:1.5px solid var(--gold)}
+.cta b{font-size:26px;font-weight:800;margin-right:8px;font-variant-numeric:tabular-nums}
+.cta span{color:var(--muted);font-size:14.5px}
+.btn.small-btn{width:auto;flex:none;padding:11px 16px;font-size:15px;border-radius:14px}
+.btn:disabled{opacity:.4;cursor:default}
+.duecard{display:grid;gap:14px;margin:14px 0 18px}
+.dnum{display:flex;align-items:baseline;gap:10px}
+.dnum b{font-size:52px;line-height:1;font-weight:800;letter-spacing:-1.5px;font-variant-numeric:tabular-nums}
+.dnum span{color:var(--muted);font-size:17px;font-weight:600}
+.duecard .small{margin-top:0}
+.lead{margin-top:8px;color:var(--muted);font-size:15.5px}
+.rrow{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.rrow:first-of-type{margin-top:8px}
+.rrow b{display:block;font-size:16.5px}
+.rrow span{font-size:13.5px;color:var(--muted)}
+.lv{display:inline-block;width:9px;height:9px;border-radius:50%;border:2px solid var(--muted);margin-left:8px;vertical-align:1px}
+.lv.on{background:var(--gold)}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -190,10 +210,10 @@ h3 .flag{margin:0 2px;vertical-align:0}
 <script>
 (function(){
 'use strict';
-const VERSION='1.2',BUILD='13.10.2026';
+const VERSION='1.3',BUILD='09.11.2026';
 
 /* ---------- Daten: Artikel | Wort | English | Українська | Markierung (at, de, b2) ---------- */
-const CATS={fam:["Familie & Menschen","alltag",""],wohn:["Wohnung & Haus","alltag",""],essen:["Essen & Trinken","alltag",""],koerper:["Körper & Gesundheit","alltag",""],kleid:["Kleidung","alltag",""],stadt:["Stadt & Verkehr","alltag",""],kauf:["Einkaufen & Geld","alltag",""],zeit:["Zeit & Wetter","alltag",""],natur:["Natur & Tiere","alltag",""],frei:["Freizeit & Reisen","alltag",""],schule:["Schule & Lernen","alltag",""],medien:["Internet & Technik","alltag",""],komm:["Kommunikation & Gefühle","alltag",""],gesell:["Gesellschaft & Umwelt","alltag",""],amt:["Ämter & Verträge","alltag",""],beruf:["Bewerbung & Karriere","job","allg"],buero:["Arbeitsalltag & Büro","job","allg"],firma:["Firma & Team","job","allg"],lohn:["Vertrag & Gehalt","job","allg"],pm:["Projektmanagement","job","proj"],assist:["Projektassistenz","job","proj"],agile:["Scrum, Agile & IT","job","proj"],meet:["Meeting & Moderation","job","proj"]};
+const CATS={fam:["Familie & Menschen","haus"],wohn:["Wohnung & Haus","haus"],essen:["Essen & Trinken","haus"],kleid:["Kleidung","haus"],koerper:["Körper & Gesundheit","haus"],komm:["Gespräche & Gefühle","haus"],stadt:["Stadt & Orte","draussen"],mobil:["Verkehr & Unterwegs","draussen"],kauf:["Einkaufen","draussen"],zeit:["Zeit & Wetter","draussen"],natur:["Natur & Tiere","draussen"],frei:["Freizeit & Reisen","draussen"],amt:["Ämter & Dokumente","land"],bank:["Bank, Post & Versicherung","land"],schule:["Schule, Kinder & Lernen","land"],medien:["Telefon, TV & Internet","land"],gesell:["Gesellschaft & Umwelt","land"],feste:["Feste & Traditionen","land"]};
 const RAW=`
 #fam
 der|Mann|man|чоловік
@@ -246,6 +266,26 @@ der|Pensionist|retiree (m)|пенсіонер|at
 der|Rentner|retiree (m)|пенсіонер|de
 der|Nachwuchs|offspring; young talent|діти, потомство; молоді кадри|b2
 die|Schwiegermutter|mother-in-law|свекруха, теща|b2
+die|Arbeit|work|робота
+der|Beruf|profession|професія
+der|Opa|grandpa|дідусь
+die|Oma|grandma|бабуся
+die|Mama|mum|мама
+der|Papa|dad|тато
+der|Zwilling|twin|близнюк
+das|Ehepaar|married couple|подружжя
+die|Scheidung|divorce|розлучення
+die|Witwe|widow|вдова|b2
+der|Schwiegervater|father-in-law|свекор; тесть|b2
+die|Verwandtschaft|relatives|родичі, рідня|b2
+der|Freundeskreis|circle of friends|коло друзів
+der|Mitbewohner|flatmate (m)|сусід по квартирі
+die|Mitbewohnerin|flatmate (f)|сусідка по квартирі
+der|Hochzeitstag|wedding anniversary|річниця весілля
+der|Geburtsort|place of birth|місце народження
+das|Geburtsdatum|date of birth|дата народження
+der|Familienstand|marital status|сімейний стан
+das|Vorbild|role model|приклад для наслідування|b2
 #wohn
 die|Wohnung|apartment, flat|квартира
 das|Haus|house|будинок
@@ -311,6 +351,48 @@ die|Renovierung|renovation|ремонт
 der|Flur|hallway|коридор, передпокій
 der|Haushalt|household|домашнє господарство
 der|Staubsauger|vacuum cleaner|пилосос
+die|Kündigung|notice (ending a contract, e.g. a rental)|розірвання договору (напр. оренди)
+die|Hausordnung|house rules|правила проживання в будинку
+die|Reparatur|repair|ремонт (полагодження)
+der|Handwerker|tradesman, repairman|майстер (ремонтник)
+der|Installateur|plumber|сантехнік|at
+der|Klempner|plumber|сантехнік|de
+der|Schaden|damage|пошкодження, шкода
+der|Wasserhahn|tap, faucet|кран (водопровідний)
+das|Waschbecken|washbasin|умивальник
+die|Spüle|kitchen sink|кухонна мийка
+die|Spülmaschine|dishwasher|посудомийна машина
+die|Glühbirne|light bulb|лампочка
+der|Rauchfang|chimney|димар|at
+der|Schornstein|chimney|димар|de
+der|Rauchfangkehrer|chimney sweep|сажотрус|at
+der|Schornsteinfeger|chimney sweep|сажотрус|de
+der|Eiskasten|fridge|холодильник|at
+die|Tuchent|duvet|ковдра (перина)|at
+die|Bettdecke|duvet|ковдра
+das|Leintuch|bed sheet|простирадло|at
+das|Laken|bed sheet|простирадло|de
+der|Lift|lift, elevator|ліфт|at
+der|Kübel|bucket|відро|at
+der|Eimer|bucket|відро|de
+die|Klingel|doorbell|дверний дзвінок
+das|Schloss|lock; castle|замок
+die|Wäsche|laundry|білизна; прання
+das|Bügeleisen|iron|праска
+der|Besen|broom|мітла, віник
+der|Lärm|noise|шум
+die|Ruhe|quiet, peace|тиша, спокій
+der|Hausmeister|caretaker|доглядач будинку
+das|Treppenhaus|stairwell|сходова клітка, під'їзд
+der|Dachboden|attic|горище
+der|Hof|courtyard|двір
+der|Quadratmeter|square metre|квадратний метр
+die|Besichtigung|viewing (of a flat)|огляд (квартири)
+der|Makler|estate agent|ріелтор
+die|Wohnungssuche|flat hunting|пошук житла
+die|Gemeindewohnung|council flat|муніципальна квартира|at
+die|Ablöse|payment to the previous tenant (e.g. for furniture)|відступні (попередньому орендарю)|at,b2
+die|Einrichtung|furnishings; facility|облаштування, меблі; заклад|b2
 #essen
 das|Brot|bread|хліб
 die|Semmel|bread roll|булочка|at
@@ -409,6 +491,83 @@ das|Trinkgeld|tip|чайові
 die|Portion|portion|порція
 der|Geschmack|taste|смак
 die|Ernährung|nutrition, diet|харчування|b2
+das|Häferl|cup, mug|чашка, кухоль|at
+das|Zuckerl|sweet, candy|цукерка (льодяник)|at
+der|Kukuruz|maize, corn|кукурудза|at
+der|Mais|maize, corn|кукурудза
+das|Kraut|cabbage|капуста|at
+der|Kohl|cabbage|капуста|de
+das|Schlagobers|whipped cream|збиті вершки|at
+die|Schlagsahne|whipped cream|збиті вершки|de
+der|Krapfen|doughnut|пончик|at
+der|Berliner|doughnut (also: person from Berlin)|пончик (також: житель Берліна)|de
+die|Nachspeise|dessert|десерт|at
+der|Nachtisch|dessert|десерт|de
+die|Hauptspeise|main course|основна страва|at
+das|Hauptgericht|main course|основна страва|de
+der|Knödel|dumpling|кнедлик|at
+der|Kloß|dumpling|кнедлик, галушка|de
+die|Vorspeise|starter|закуска
+die|Speise|dish|страва
+das|Mehl|flour|борошно
+das|Rindfleisch|beef|яловичина
+das|Schweinefleisch|pork|свинина
+der|Strudel|strudel|штрудель
+das|Schnitzel|schnitzel|шніцель
+das|Gulasch|goulash|гуляш
+der|Senf|mustard|гірчиця
+der|Essig|vinegar|оцет
+der|Hunger|hunger|голод
+der|Durst|thirst|спрага
+der|Appetit|appetite|апетит
+die|Diät|diet|дієта
+der|Vegetarier|vegetarian (m)|вегетаріанець
+der|Kellner|waiter|офіціант
+die|Kellnerin|waitress|офіціантка
+die|Reservierung|reservation|бронювання (столика)
+das|Menü|set menu|комплексний обід
+#kleid
+die|Hose|trousers, pants|штани
+das|Hemd|shirt|сорочка
+der|Pullover|sweater|светр
+die|Jacke|jacket|куртка
+der|Mantel|coat|пальто
+das|Kleid|dress|сукня
+der|Rock|skirt|спідниця
+der|Schuh|shoe|черевик, взуття
+der|Handschuh|glove|рукавичка
+die|Tasche|bag, pocket|сумка, кишеня
+der|Anzug|suit|костюм
+die|Brille|glasses|окуляри
+die|Uhr|clock, watch|годинник
+die|Mütze|cap, hat|шапка
+die|Haube|woolly hat|шапка|at
+das|T-Shirt|T-shirt|футболка
+das|Leiberl|T-shirt|футболка|at
+die|Kleidung|clothing|одяг
+das|Gewand|clothes, outfit|одяг|at
+der|Gürtel|belt|пасок
+die|Socke|sock|шкарпетка
+der|Stiefel|boot|чобіт
+der|Schal|scarf|шарф
+die|Bluse|blouse|блузка
+der|Ring|ring|каблучка
+die|Kette|necklace; chain|намисто; ланцюжок
+die|Unterwäsche|underwear|білизна
+der|Zipp|zip|блискавка (застібка)|at
+der|Reißverschluss|zip|блискавка (застібка)|de
+der|Knopf|button|ґудзик
+der|Hut|hat|капелюх
+der|Badeanzug|swimsuit|купальник
+die|Strumpfhose|tights|колготки
+das|Kleidungsstück|item of clothing|предмет одягу
+die|Umkleidekabine|changing room|примірочна
+der|Schmuck|jewellery|прикраси
+der|Ohrring|earring|сережка
+die|Mode|fashion|мода
+die|Sonnenbrille|sunglasses|сонцезахисні окуляри
+der|Turnschuh|trainer, sneaker|кросівок
+der|Hausschuh|slipper|капець
 #koerper
 der|Kopf|head|голова
 das|Gesicht|face|обличчя
@@ -466,34 +625,120 @@ die|Patientin|patient (f)|пацієнтка
 die|Therapie|therapy|терапія
 die|Pflege|care, nursing|догляд
 die|Diagnose|diagnosis|діагноз|b2
-#kleid
-die|Hose|trousers, pants|штани
-das|Hemd|shirt|сорочка
-der|Pullover|sweater|светр
-die|Jacke|jacket|куртка
-der|Mantel|coat|пальто
-das|Kleid|dress|сукня
-der|Rock|skirt|спідниця
-der|Schuh|shoe|черевик, взуття
-der|Handschuh|glove|рукавичка
-die|Tasche|bag, pocket|сумка, кишеня
-der|Anzug|suit|костюм
-die|Brille|glasses|окуляри
-die|Uhr|clock, watch|годинник
-die|Mütze|cap, hat|шапка
-die|Haube|woolly hat|шапка|at
-das|T-Shirt|T-shirt|футболка
-das|Leiberl|T-shirt|футболка|at
-die|Kleidung|clothing|одяг
-das|Gewand|clothes, outfit|одяг|at
-der|Gürtel|belt|пасок
-die|Socke|sock|шкарпетка
-der|Stiefel|boot|чобіт
-der|Schal|scarf|шарф
-die|Bluse|blouse|блузка
-der|Ring|ring|каблучка
-die|Kette|necklace; chain|намисто; ланцюжок
-die|Unterwäsche|underwear|білизна
+der|Hausarzt|family doctor|сімейний лікар
+der|Kinderarzt|paediatrician|дитячий лікар
+der|Facharzt|specialist doctor|лікар-спеціаліст
+der|Augenarzt|eye doctor|окуліст
+das|Wartezimmer|waiting room|кімната очікування
+die|Notaufnahme|emergency department|приймальне відділення
+die|Ambulanz|hospital outpatient clinic|амбулаторія при лікарні|at
+die|Krankenkasse|health insurance fund|лікарняна каса
+die|Verkühlung|cold|застуда|at
+das|Pflaster|plaster, band-aid|пластир
+die|Salbe|ointment|мазь
+die|Spritze|injection; syringe|укол; шприц
+der|Verband|bandage|пов'язка, бинт
+der|Blutdruck|blood pressure|артеріальний тиск
+die|Operation|operation|операція
+das|Symptom|symptom|симптом
+die|Übelkeit|nausea|нудота
+der|Durchfall|diarrhoea|діарея
+das|Kopfweh|headache|головний біль
+die|Schwangerschaft|pregnancy|вагітність
+die|Geburt|birth|народження; пологи
+die|Brust|chest; breast|груди
+das|Gewicht|weight|вага
+der|Schlaf|sleep|сон
+die|Müdigkeit|tiredness|втома
+der|Rollstuhl|wheelchair|інвалідний візок
+die|Bewegung|exercise, movement|рух, фізична активність
+die|Vorsorgeuntersuchung|preventive check-up|профілактичний огляд|b2
+#komm
+der|Fehler|mistake, error|помилка
+die|Frage|question|питання
+die|Antwort|answer|відповідь
+die|Nachricht|message|повідомлення
+die|Einladung|invitation|запрошення
+die|Erklärung|explanation|пояснення
+der|Kontakt|contact|контакт
+das|Gespräch|conversation|розмова
+das|Missverständnis|misunderstanding|непорозуміння
+die|Bitte|request|прохання
+der|Wunsch|wish|бажання
+der|Dank|thanks|подяка
+die|Entschuldigung|apology; excuse me|вибачення
+die|Ausrede|excuse|відмовка
+der|Streit|argument, quarrel|сварка
+die|Diskussion|discussion|дискусія, обговорення
+der|Witz|joke|жарт
+die|Geschichte|story; history|історія
+die|Stimme|voice; vote|голос
+die|Freude|joy|радість
+die|Angst|fear|страх
+die|Liebe|love|любов
+das|Glück|happiness; luck|щастя; удача
+die|Sorge|worry|хвилювання, турбота
+der|Ärger|anger; trouble|роздратування; неприємності
+die|Hoffnung|hope|надія
+die|Geduld|patience|терпіння
+das|Vertrauen|trust|довіра
+der|Mut|courage|сміливість
+die|Laune|mood|настрій
+die|Stimmung|atmosphere, mood|атмосфера, настрій
+das|Gefühl|feeling|почуття
+der|Stress|stress|стрес
+der|Charakter|character|характер
+der|Humor|humour|гумор
+das|Interesse|interest|інтерес, зацікавлення
+die|Enttäuschung|disappointment|розчарування|b2
+die|Erleichterung|relief|полегшення|b2
+die|Neugier|curiosity|цікавість|b2
+der|Irrtum|mistake, misconception|помилка, хибна думка|b2
+die|Höflichkeit|politeness|ввічливість|b2
+die|Erfahrung|experience|досвід
+die|Stärke|strength|сильна сторона
+die|Schwäche|weakness|слабка сторона
+die|Fähigkeit|ability, skill|здатність, навичка
+das|Ziel|goal|ціль, мета
+die|Lösung|solution|розв'язання, вирішення
+das|Problem|problem|проблема
+die|Änderung|change|зміна
+das|Ergebnis|result|результат
+die|Entscheidung|decision|рішення (вибір)
+die|Erinnerung|reminder; memory|нагадування; спогад
+der|Vorschlag|suggestion|пропозиція
+die|Absage|cancellation, refusal|відмова, скасування
+die|Zusage|confirmation, acceptance|згода, підтвердження
+die|Kommunikation|communication|комунікація
+der|Kompromiss|compromise|компроміс
+die|Begrüßung|greeting|привітання (при зустрічі)
+der|Abschied|farewell|прощання
+der|Gruß|greeting, regards|привіт, вітання
+der|Ratschlag|piece of advice|порада
+die|Beschwerde|complaint|скарга
+die|Lüge|lie|брехня
+die|Wahrheit|truth|правда
+der|Eindruck|impression|враження
+die|Unterhaltung|conversation; entertainment|розмова; розваги
+die|Ahnung|idea, notion|уявлення
+der|Grund|reason; ground|причина; ґрунт
+das|Beispiel|example|приклад
+die|Erlaubnis|permission|дозвіл
+das|Verbot|ban|заборона
+die|Langeweile|boredom|нудьга
+die|Überraschung|surprise|сюрприз, несподіванка
+das|Geheimnis|secret|таємниця
+der|Kuss|kiss|поцілунок
+die|Umarmung|hug|обійми
+die|Träne|tear|сльоза
+das|Lächeln|smile|усмішка
+der|Respekt|respect|повага
+der|Konflikt|conflict|конфлікт
+die|Absicht|intention|намір|b2
+die|Toleranz|tolerance|толерантність|b2
+die|Eifersucht|jealousy|ревнощі|b2
+das|Selbstvertrauen|self-confidence|впевненість у собі|b2
+das|Vorurteil|prejudice|упередження|b2
 #stadt
 die|Stadt|city, town|місто
 das|Dorf|village|село
@@ -501,6 +746,45 @@ die|Straße|street|вулиця
 der|Platz|square; place|площа; місце
 der|Park|park|парк
 das|Zentrum|centre|центр
+der|Weg|way, path|шлях, дорога
+die|Adresse|address|адреса
+der|Stadtplan|city map|план міста
+das|Museum|museum|музей
+der|Ort|place, town|місце, населений пункт
+der|Plan|plan|план
+die|Brücke|bridge|міст
+die|Kirche|church|церква
+das|Rathaus|town hall|ратуша
+das|Kino|cinema|кінотеатр
+das|Theater|theatre|театр
+die|Polizei|police|поліція
+die|Feuerwehr|fire brigade|пожежна служба
+der|Bezirk|district|район (міста)
+die|Gegend|area|місцевість, район
+die|Ecke|corner|ріг, кут
+der|Eingang|entrance|вхід
+der|Ausgang|exit|вихід
+die|Richtung|direction|напрямок
+die|Entfernung|distance|відстань
+die|Trafik|tobacconist's kiosk (also sells tickets)|трафіка (кіоск: газети, тютюн, квитки)|at
+das|Beisl|pub, small restaurant|корчма, невеликий ресторан|at
+die|Kneipe|pub, bar|пивна, бар|de
+der|Friedhof|cemetery|кладовище
+das|Denkmal|monument|пам'ятник
+der|Spielplatz|playground|дитячий майданчик
+die|Gasse|lane (in Austria: also a street)|провулок (в Австрії: вулиця)|at
+der|Stadtteil|part of town|район міста
+die|Hauptstadt|capital|столиця
+der|Einwohner|inhabitant|мешканець
+die|Innenstadt|city centre|центр міста
+der|Hafen|port|порт
+das|Schild|sign|табличка, знак
+die|Mauer|wall (outdoor)|мур
+das|Hochhaus|high-rise building|багатоповерхівка
+der|Turm|tower|вежа
+das|Fundbüro|lost property office|бюро знахідок
+der|Brunnen|fountain; well|фонтан; криниця
+#mobil
 der|Bahnhof|train station|вокзал
 die|Haltestelle|stop|зупинка
 die|U-Bahn|underground, metro|метро
@@ -513,56 +797,56 @@ der|Flughafen|airport|аеропорт
 die|Fahrkarte|ticket|квиток
 der|Fahrplan|timetable|розклад руху
 die|Kreuzung|intersection|перехрестя
-der|Weg|way, path|шлях, дорога
-die|Adresse|address|адреса
-der|Stadtplan|city map|план міста
-das|Museum|museum|музей
-die|Post|post office, mail|пошта
-die|Bank|bank (also: bench)|банк; лава
 der|Führerschein|driving licence|водійське посвідчення
 die|Verspätung|delay|запізнення
-der|Ort|place, town|місце, населений пункт
-der|Plan|plan|план
 der|Gehsteig|pavement, sidewalk|тротуар|at
 der|Bürgersteig|pavement, sidewalk|тротуар|de
 die|Bim|tram (Vienna, informal)|трамвай (розмовне, Відень)|at
 die|Ampel|traffic light|світлофор
 der|Stau|traffic jam|затор
-die|Brücke|bridge|міст
-die|Kirche|church|церква
-das|Rathaus|town hall|ратуша
-das|Kino|cinema|кінотеатр
-das|Theater|theatre|театр
-die|Polizei|police|поліція
-die|Feuerwehr|fire brigade|пожежна служба
 das|Taxi|taxi|таксі
 die|Tankstelle|petrol station|автозаправка
 der|Parkplatz|parking space, car park|парковка
 die|Baustelle|construction site|будівельний майданчик
 die|Umleitung|detour|об'їзд
-der|Bezirk|district|район (міста)
-die|Gegend|area|місцевість, район
-die|Ecke|corner|ріг, кут
-der|Eingang|entrance|вхід
-der|Ausgang|exit|вихід
-die|Richtung|direction|напрямок
-die|Entfernung|distance|відстань
 der|Verkehr|traffic|рух (дорожній)
 die|Fußgängerzone|pedestrian zone|пішохідна зона
 die|Station|station, stop|станція
 die|Jahreskarte|annual pass|річний проїзний
-die|Trafik|tobacconist's kiosk (also sells tickets)|трафіка (кіоск: газети, тютюн, квитки)|at
-das|Beisl|pub, small restaurant|корчма, невеликий ресторан|at
-die|Kneipe|pub, bar|пивна, бар|de
+der|Strafzettel|(parking) ticket|штраф (квитанція)
+das|Pickerl|sticker; motorway vignette; car inspection|наліпка; віньєтка; техогляд авто|at
+der|Aufkleber|sticker|наліпка|de
+der|Schranken|barrier (at a crossing)|шлагбаум|at
+die|Schranke|barrier (at a crossing)|шлагбаум|de
+die|Fahrschule|driving school|автошкола
+der|Reifen|tyre|шина
+die|Panne|breakdown|поломка (в дорозі)
+die|Werkstatt|garage, repair shop|автомайстерня
+der|Radweg|cycle path|велодоріжка
+die|Autobahn|motorway|автомагістраль
+die|Maut|toll|плата за проїзд
+der|Fahrgast|passenger|пасажир
+der|Bahnsteig|platform|перон
+das|Gleis|track|колія
+die|Abfahrt|departure|відправлення
+die|Ankunft|arrival|прибуття
+der|Anschluss|connection (train, bus)|пересадка, сполучення
+die|Kurzparkzone|short-term parking zone|зона короткочасного паркування|at
+der|Parkschein|parking ticket|паркувальний талон
+der|Kreisverkehr|roundabout|кільцевий рух
+die|Geschwindigkeit|speed|швидкість
+der|Fußgänger|pedestrian|пішохід
+der|Zebrastreifen|zebra crossing|пішохідний перехід
+der|Helm|helmet|шолом
+der|Roller|kick scooter; motor scooter|самокат; скутер
 #kauf
 der|Supermarkt|supermarket|супермаркет
-das|Geschäft|shop, business|магазин, справа
+das|Geschäft|shop|магазин
 der|Markt|market|ринок
 der|Preis|price|ціна
 das|Geld|money|гроші
 das|Bargeld|cash|готівка
 die|Karte|card; map|картка; карта
-die|Kreditkarte|credit card|кредитна картка
 die|Rechnung|bill, invoice|рахунок
 der|Kassenbon|receipt|касовий чек
 die|Kasse|checkout, till|каса
@@ -578,14 +862,8 @@ die|Kundin|customer (f)|клієнтка
 die|Kassa|checkout, till|каса|at
 das|Sackerl|(shopping) bag|пакет, торбинка|at
 die|Tüte|(shopping) bag|пакет|de
-das|Paket|parcel|посилка
-das|Packerl|parcel|посилка|at
 der|Fleischhauer|butcher|м'ясник|at
 der|Metzger|butcher|м'ясник|de
-der|Bankomat|cash machine, ATM|банкомат|at
-der|Geldautomat|cash machine, ATM|банкомат|de
-die|Bankomatkarte|debit card|дебетова картка|at
-die|Girokarte|debit card|дебетова картка|de
 die|Quittung|receipt|квитанція, чек
 der|Umtausch|exchange (of goods)|обмін (товару)
 die|Garantie|guarantee, warranty|гарантія
@@ -600,6 +878,24 @@ das|Einkaufszentrum|shopping centre|торговий центр
 die|Öffnungszeit|opening hour|час роботи
 der|Gutschein|voucher|подарунковий сертифікат, ваучер
 die|Zahlung|payment|оплата, платіж
+das|Produkt|product|продукт
+die|Qualität|quality|якість
+der|Wert|value|цінність, вартість
+das|Sonderangebot|special offer|спеціальна пропозиція
+das|Kleingeld|small change|дрібні гроші
+die|Münze|coin|монета
+der|Schein|banknote; certificate|купюра; довідка
+das|Wechselgeld|change (money back)|решта
+die|Kundenkarte|loyalty card|картка клієнта
+der|Einkaufswagen|shopping trolley|візок для покупок
+der|Korb|basket|кошик
+die|Verpackung|packaging|упаковка
+das|Pfand|deposit (on bottles)|застава (за пляшку)
+die|Rückgabe|return (of goods)|повернення (товару)
+der|Flohmarkt|flea market|блошиний ринок
+der|Verkäufer|shop assistant (m)|продавець
+die|Verkäuferin|shop assistant (f)|продавчиня
+die|Reklamation|complaint (about goods)|претензія (щодо товару)|b2
 #zeit
 die|Zeit|time|час
 die|Stunde|hour|година
@@ -625,7 +921,6 @@ der|Wind|wind|вітер
 die|Temperatur|temperature|температура
 der|Regenschirm|umbrella|парасолька
 der|Geburtstag|birthday|день народження
-der|Feiertag|public holiday|святковий день
 der|Urlaub|holiday, vacation|відпустка
 der|Jänner|January|січень|at
 der|Januar|January|січень|de
@@ -654,6 +949,21 @@ die|Wettervorhersage|weather forecast|прогноз погоди
 der|Alltag|everyday life|повсякдення, будні
 der|Augenblick|moment|мить|b2
 der|Zeitraum|period (of time)|період|b2
+der|Kalender|calendar|календар
+die|Pause|break|перерва
+der|Wochentag|weekday|день тижня
+der|Wecker|alarm clock|будильник
+die|Viertelstunde|quarter of an hour|чверть години
+das|Jahrzehnt|decade|десятиліття
+der|Vormittag|morning (before noon)|перша половина дня
+der|Nachmittag|afternoon|друга половина дня
+die|Mitternacht|midnight|північ (час)
+das|Glatteis|black ice|ожеледиця
+der|Hagel|hail|град
+der|Frost|frost|мороз
+der|Grad|degree|градус
+das|Unwetter|severe weather|негода
+die|Feuchtigkeit|humidity|вологість|b2
 #natur
 der|Hund|dog|собака
 die|Katze|cat|кішка
@@ -693,6 +1003,24 @@ der|Schmetterling|butterfly|метелик
 der|Mond|moon|місяць (на небі)
 der|Stern|star|зірка
 das|Feuer|fire|вогонь
+das|Huhn|hen, chicken|курка
+die|Ente|duck|качка
+die|Spinne|spider|павук
+die|Fliege|fly|муха
+die|Ameise|ant|мурашка
+das|Insekt|insect|комаха
+der|Igel|hedgehog|їжак
+das|Eichhörnchen|squirrel|білка
+die|Rose|rose|троянда
+der|Ast|branch|гілка
+die|Wurzel|root|корінь
+der|Bach|stream|струмок
+die|Quelle|spring; source|джерело
+die|Höhle|cave|печера
+der|Gipfel|summit|вершина
+der|Nationalpark|national park|національний парк
+die|Alm|alpine pasture|альпійське пасовище|at
+der|Tierarzt|vet|ветеринар
 #frei
 das|Hobby|hobby|хобі
 der|Sport|sport|спорт
@@ -738,6 +1066,112 @@ die|Freizeit|free time|вільний час
 das|Abenteuer|adventure|пригода
 der|Roman|novel|роман
 die|Erholung|rest, recovery|відпочинок, відновлення|b2
+das|Hallenbad|indoor pool|критий басейн
+das|Freibad|outdoor pool|відкритий басейн
+der|Schi|ski|лижа|at
+der|Ski|ski|лижа|de
+der|Campingplatz|campsite|кемпінг
+die|Jugendherberge|youth hostel|молодіжний хостел
+das|Gepäck|luggage|багаж
+der|Rucksack|backpack|рюкзак
+die|Landkarte|map|карта (географічна)
+die|Rundfahrt|sightseeing tour|оглядова екскурсія
+der|Eintritt|admission (fee)|вхід (плата за вхід)
+die|Eintrittskarte|entrance ticket|вхідний квиток
+die|Vorstellung|performance; idea|вистава; уявлення
+das|Picknick|picnic|пікнік
+das|Brettspiel|board game|настільна гра
+der|Spaß|fun|задоволення, веселощі
+das|Andenken|souvenir|сувенір|b2
+#amt
+das|Amt|office, authority|установа, відомство
+die|Behörde|authority|орган влади
+die|Anmeldung|registration|реєстрація
+der|Meldezettel|registration form (residence)|бланк реєстрації місця проживання|at
+der|Aufenthaltstitel|residence permit|дозвіл на проживання
+der|Antrag|application (official)|заява
+der|Bescheid|official notice|офіційне повідомлення, рішення
+die|Steuer|tax|податок
+die|Sozialversicherung|social insurance|соціальне страхування
+die|Sozialversicherungsnummer|social security number|номер соціального страхування
+die|e-card|health insurance card|картка медичного страхування (e-card)|at
+der|Vertrag|contract|договір
+der|Mietvertrag|rental contract|договір оренди
+die|Kaution|deposit|застава
+die|Bestätigung|confirmation|підтвердження
+die|Beglaubigung|certification (of a copy or signature)|засвідчення (копії, підпису)|b2
+die|Übersetzung|translation|переклад
+das|Gesetz|law|закон
+die|Beratung|advice, counselling|консультація
+die|Förderung|funding, support|фінансова підтримка, дотація
+der|Ausweis|ID card|посвідчення особи
+der|Nachweis|proof|підтвердження, доказ
+die|Staatsbürgerschaft|citizenship|громадянство|at
+der|Sprachkurs|language course|мовний курс
+der|Integrationskurs|integration course|інтеграційний курс
+die|Meldebestätigung|confirmation of registration (residence)|підтвердження реєстрації місця проживання|at
+das|Finanzamt|tax office|податкова служба
+die|Gemeinde|municipality|громада, муніципалітет
+die|Gebühr|fee|збір, плата
+der|Stempel|stamp|печатка, штамп
+die|Kopie|copy|копія
+die|Geburtsurkunde|birth certificate|свідоцтво про народження
+die|Botschaft|embassy; message|посольство; послання
+die|Familienbeihilfe|family allowance|сімейна допомога (на дітей)|at
+das|Kindergeld|child benefit|допомога на дітей|de
+die|Heiratsurkunde|marriage certificate|свідоцтво про шлюб|b2
+das|Konsulat|consulate|консульство|b2
+die|Einbürgerung|naturalisation|набуття громадянства|b2
+das|Dokument|document|документ
+das|Formular|form|бланк, форма
+die|Unterschrift|signature|підпис
+die|Nummer|number|номер
+die|Pension|(retirement) pension; small hotel|пенсія; пансіонат|at
+die|Rente|pension|пенсія|de
+die|Staatsangehörigkeit|nationality|громадянство|de
+die|Anzeige|report (to the police); advert|заява (в поліцію); оголошення
+die|Wartenummer|queue number|номер у черзі
+der|Schalter|counter; switch|віконце (каса); вимикач
+das|Standesamt|registry office|РАЦС (відділ реєстрації актів цивільного стану)
+die|Frist|deadline|термін (крайній строк)
+der|Behördenweg|trip to the authorities|похід до державних установ|at,b2
+#bank
+die|Post|post office; mail|пошта
+die|Bank|bank; bench|банк; лава
+die|Kreditkarte|credit card|кредитна картка
+das|Paket|parcel|посилка
+das|Packerl|parcel|посилка|at
+der|Bankomat|cash machine, ATM|банкомат|at
+der|Geldautomat|cash machine, ATM|банкомат|de
+die|Bankomatkarte|debit card|дебетова картка|at
+die|Girokarte|debit card|дебетова картка|de
+das|Konto|account (bank, online)|рахунок; обліковий запис
+die|Krankenversicherung|health insurance|медичне страхування
+die|Versicherung|insurance|страхування
+der|Brief|letter|лист
+die|Überweisung|bank transfer; (doctor's) referral|банківський переказ; направлення (до лікаря)
+das|Girokonto|current account|поточний рахунок
+der|Erlagschein|payment slip|платіжна квитанція|at
+der|Überweisungsträger|payment slip|бланк банківського переказу|de,b2
+der|Kredit|loan|кредит
+der|Kontoauszug|bank statement|виписка з рахунку
+der|Dauerauftrag|standing order|регулярний платіж (постійне доручення)|b2
+die|Haftpflichtversicherung|liability insurance|страхування цивільної відповідальності|b2
+die|Haushaltsversicherung|home contents insurance|страхування майна в квартирі|at,b2
+die|Hausratversicherung|home contents insurance|страхування майна в квартирі|de,b2
+der|Briefumschlag|envelope|конверт
+das|Kuvert|envelope|конверт|at
+die|Briefmarke|stamp|поштова марка
+der|Absender|sender|відправник
+der|Empfänger|recipient|отримувач
+die|Postleitzahl|postcode|поштовий індекс
+das|Einschreiben|registered letter|рекомендований лист
+der|Briefträger|postman|листоноша
+der|Briefkasten|letterbox, postbox|поштова скринька
+die|Mahnung|payment reminder|нагадування про оплату (борг)|b2
+das|Guthaben|credit balance|залишок (кошти на рахунку)|b2
+der|Betrag|amount|сума
+der|Zins|interest (on money)|відсоток (банківський)|b2
 #schule
 die|Schule|school|школа
 die|Universität|university|університет
@@ -776,31 +1210,50 @@ die|Muttersprache|mother tongue|рідна мова
 die|Fremdsprache|foreign language|іноземна мова
 das|Niveau|level|рівень
 die|Kenntnis|knowledge (of something)|знання (чогось)|b2
+das|Zeugnis|school report; certificate|табель (шкільний); свідоцтво
+die|Ausbildung|education; vocational training|освіта; професійне навчання
+das|Studium|studies (university)|навчання в університеті
+der|Abschluss|school-leaving qualification; end|атестат, диплом; завершення
+das|Wort|word|слово
+die|Liste|list|список
+der|Kurs|course|курс
+das|Zertifikat|certificate|сертифікат
+die|Prüfung|exam, test|іспит
+die|Aufgabe|task, exercise|завдання
+der|Fortschritt|progress|прогрес
+der|Teilnehmer|participant (m), e.g. in a course|учасник (напр. курсу)
+die|Teilnehmerin|participant (f), e.g. in a course|учасниця (напр. курсу)
+die|Methode|method|метод
+die|Verbesserung|improvement|покращення
+die|Zusammenfassung|summary|підсумок, резюме
+die|Kinderbetreuung|childcare|догляд за дітьми
+die|Krippe|crèche, nursery|ясла
+der|Hort|after-school care|група продовженого дня
+die|Schularbeit|class test|контрольна робота|at
+die|Klassenarbeit|class test|контрольна робота|de
+der|Elternabend|parents' evening|батьківські збори
+das|Referat|presentation (at school)|доповідь, реферат
+die|Erziehung|upbringing|виховання
+der|Stundenplan|(school) timetable|розклад уроків
+die|Schultasche|school bag|шкільний портфель
+der|Wortschatz|vocabulary|словниковий запас
+die|Aussprache|pronunciation|вимова
+der|Satz|sentence|речення
+der|Text|text|текст
+die|Bedeutung|meaning|значення
+die|Wiederholung|revision, repetition|повторення
+die|Nachhilfe|tutoring|репетиторство, додаткові заняття
+die|Teilnahme|participation|участь|b2
 #medien
 das|Telefon|telephone|телефон
 das|Handy|mobile phone|мобільний телефон
 das|Passwort|password|пароль
-die|Software|software|програмне забезпечення
 das|Programm|program|програма
 die|App|app|застосунок
-die|Anwendung|application|застосунок, застосування
-das|Netzwerk|network, networking|мережа
-der|Server|server|сервер
-die|Cloud|cloud|хмара (обчислення)
 die|Sicherheit|security, safety|безпека
 der|Datenschutz|data protection|захист даних
-der|Fehler|error, mistake, bug|помилка
 die|Störung|malfunction, disruption|збій
 das|Update|update|оновлення
-die|Version|version|версія
-der|Code|code|код
-das|System|system|система
-der|Zugang|access|доступ
-das|Konto|account|обліковий запис, рахунок
-die|Automatisierung|automation|автоматизація
-die|Künstliche Intelligenz|artificial intelligence (AI)|штучний інтелект
-die|Digitalisierung|digitalisation|цифровізація
-das|Tool|tool|інструмент
 das|Internet|internet|інтернет
 die|Website|website|вебсайт
 das|WLAN|Wi-Fi|Wi-Fi (бездротова мережа)
@@ -814,49 +1267,29 @@ das|Gerät|device|пристрій
 die|Technik|technology; technique|техніка, технологія
 das|Profil|profile|профіль
 der|Benutzername|username|ім'я користувача
-#komm
-die|Frage|question|питання
-die|Antwort|answer|відповідь
-die|Nachricht|message|повідомлення
-die|Einladung|invitation|запрошення
-die|Erklärung|explanation|пояснення
-der|Kontakt|contact|контакт
-das|Gespräch|conversation|розмова
-das|Missverständnis|misunderstanding|непорозуміння
-die|Bitte|request|прохання
-der|Wunsch|wish|бажання
-der|Dank|thanks|подяка
-die|Entschuldigung|apology; excuse me|вибачення
-die|Ausrede|excuse|відмовка
-der|Streit|argument, quarrel|сварка
-die|Diskussion|discussion|дискусія, обговорення
-der|Witz|joke|жарт
-die|Geschichte|story; history|історія
-die|Stimme|voice; vote|голос
-die|Freude|joy|радість
-die|Angst|fear|страх
-die|Liebe|love|любов
-das|Glück|happiness; luck|щастя; удача
-die|Sorge|worry|хвилювання, турбота
-der|Ärger|anger; trouble|роздратування; неприємності
-die|Hoffnung|hope|надія
-die|Geduld|patience|терпіння
-das|Vertrauen|trust|довіра
-der|Mut|courage|сміливість
-die|Laune|mood|настрій
-die|Stimmung|atmosphere, mood|атмосфера, настрій
-das|Gefühl|feeling|почуття
-der|Stress|stress|стрес
-der|Charakter|character|характер
-der|Humor|humour|гумор
-das|Interesse|interest|інтерес, зацікавлення
-die|Enttäuschung|disappointment|розчарування|b2
-die|Erleichterung|relief|полегшення|b2
-die|Neugier|curiosity|цікавість|b2
-der|Irrtum|mistake, misconception|помилка, хибна думка|b2
-die|Höflichkeit|politeness|ввічливість|b2
+der|Computer|computer|комп'ютер
+der|Laptop|laptop|ноутбук
+der|Bildschirm|screen|екран
+die|Tastatur|keyboard|клавіатура
+die|E-Mail|e-mail (AT also: das E-Mail)|електронний лист
+der|Anhang|attachment (e-mail)|вкладення (у листі)
+die|Datei|file|файл
+der|Anruf|phone call|телефонний дзвінок
+die|Vorwahl|dialling code|телефонний код
+der|Anrufbeantworter|answering machine|автовідповідач
+die|Sprachnachricht|voice message|голосове повідомлення
+der|Fernseher|TV set|телевізор
+das|Fernsehen|television|телебачення
+das|Radio|radio|радіо
+die|Sendung|programme (TV, radio); shipment|передача; відправлення
+der|Kopfhörer|headphones|навушники
+die|Fernbedienung|remote control|пульт (дистанційного керування)
+die|Zeitschrift|magazine|журнал
+der|Artikel|article (newspaper; grammar)|стаття; артикль
+das|Smartphone|smartphone|смартфон
+das|Datenvolumen|mobile data allowance|обсяг мобільного інтернету|b2
 #gesell
-die|Gesellschaft|society; company|суспільство; товариство
+die|Gesellschaft|society|суспільство
 die|Umwelt|environment|довкілля
 die|Energie|energy|енергія
 die|Politik|politics|політика
@@ -869,7 +1302,6 @@ der|Frieden|peace|мир
 die|Hilfe|help|допомога
 die|Spende|donation|пожертва
 die|Kultur|culture|культура
-die|Tradition|tradition|традиція
 die|Integration|integration|інтеграція
 die|Herkunft|origin|походження
 die|Heimat|home, homeland|батьківщина
@@ -881,311 +1313,57 @@ die|Demokratie|democracy|демократія|b2
 das|Ehrenamt|voluntary work|волонтерство|b2
 die|Gleichberechtigung|equal rights|рівноправність|b2
 die|Nachhaltigkeit|sustainability|сталий розвиток|b2
-#amt
-das|Amt|office, authority|установа, відомство
-die|Behörde|authority|орган влади
-das|AMS|Public Employment Service Austria|служба зайнятості (AMS)|at
-die|Anmeldung|registration|реєстрація
-der|Meldezettel|registration form (residence)|бланк реєстрації місця проживання|at
-der|Aufenthaltstitel|residence permit|дозвіл на проживання
-die|Rot-Weiß-Rot-Karte|Red-White-Red Card|червоно-біло-червона картка|at
-die|Arbeitserlaubnis|work permit|дозвіл на роботу
-der|Antrag|application (official)|заява
-der|Bescheid|official notice|офіційне повідомлення, рішення
-die|Steuer|tax|податок
-die|Steuernummer|tax number|податковий номер
-die|Sozialversicherung|social insurance|соціальне страхування
-die|Sozialversicherungsnummer|social security number|номер соціального страхування
-die|Krankenversicherung|health insurance|медичне страхування
-die|Versicherung|insurance|страхування
-die|e-card|health insurance card|картка медичного страхування (e-card)|at
-der|Vertrag|contract|договір
-der|Mietvertrag|rental contract|договір оренди
-die|Kaution|deposit|застава
-die|Bestätigung|confirmation|підтвердження
-die|Beglaubigung|certification (of a copy or signature)|засвідчення (копії, підпису)|b2
-die|Übersetzung|translation|переклад
-die|Anerkennung|recognition|визнання (кваліфікацій)
-die|Nostrifizierung|recognition of a foreign degree|нострифікація диплома|at,b2
-das|Gesetz|law|закон
-die|Beratung|advice, counselling|консультація
-die|Förderung|funding, support|фінансова підтримка, дотація
-der|Ausweis|ID card|посвідчення особи
-der|Nachweis|proof|підтвердження, доказ
-die|Staatsbürgerschaft|citizenship|громадянство
-das|Arbeitslosengeld|unemployment benefit|допомога по безробіттю
-der|Sprachkurs|language course|мовний курс
-der|Integrationskurs|integration course|інтеграційний курс
-die|Meldebestätigung|confirmation of registration (residence)|підтвердження реєстрації місця проживання|at
-das|Finanzamt|tax office|податкова служба
-die|Gemeinde|municipality|громада, муніципалітет
-die|Gebühr|fee|збір, плата
-der|Stempel|stamp|печатка, штамп
-die|Kopie|copy|копія
-die|Geburtsurkunde|birth certificate|свідоцтво про народження
-der|Strafzettel|(parking) ticket|штраф (квитанція)
-die|Botschaft|embassy; message|посольство; послання
-die|Familienbeihilfe|family allowance|сімейна допомога (на дітей)|at
-das|Kindergeld|child benefit|допомога на дітей|de
-die|Heiratsurkunde|marriage certificate|свідоцтво про шлюб|b2
-das|Konsulat|consulate|консульство|b2
-die|Einbürgerung|naturalisation|набуття громадянства|b2
-#beruf
-die|Arbeit|work|робота
-der|Job|job|робота, підробіток
-der|Beruf|profession|професія
-die|Stelle|position, job opening|посада, вакансія
-die|Stellenanzeige|job ad|оголошення про вакансію
-die|Bewerbung|application|заявка на посаду
-der|Lebenslauf|CV, résumé|резюме
-das|Anschreiben|cover letter|супровідний лист
-das|Zeugnis|reference, certificate|характеристика, свідоцтво
-das|Vorstellungsgespräch|job interview|співбесіда
-der|Bewerber|applicant (m)|кандидат
-die|Bewerberin|applicant (f)|кандидатка
-die|Erfahrung|experience|досвід
-die|Berufserfahrung|work experience|професійний досвід
-die|Qualifikation|qualification|кваліфікація
-die|Ausbildung|vocational training, education|професійне навчання, освіта
-das|Studium|studies (university)|навчання в університеті
-der|Abschluss|degree, completion|диплом (кваліфікація), завершення
-die|Stärke|strength|сильна сторона
-die|Schwäche|weakness|слабка сторона
-das|Gehalt|salary|зарплата
-die|Probezeit|probation period|випробувальний термін
-die|Kündigung|termination, notice|звільнення, розірвання договору
-die|Karriere|career|кар'єра
-der|Quereinsteiger|career changer (m)|той, хто змінив сферу
-die|Quereinsteigerin|career changer (f)|та, що змінила сферу
-die|Weiterbildung|further training|підвищення кваліфікації
-der|Arbeitgeber|employer|роботодавець
-der|Arbeitnehmer|employee|найманий працівник
-der|Kollege|colleague (m)|колега
-die|Kollegin|colleague (f)|колега (жінка)
-der|Chef|boss (m)|начальник, шеф
-die|Chefin|boss (f)|начальниця
-die|Teilzeit|part-time|неповна зайнятість
-die|Vollzeit|full-time|повна зайнятість
-das|Homeoffice|home office|робота вдома
-der|Arbeitsvertrag|employment contract|трудовий договір
-die|Arbeitszeit|working hours|робочий час
-das|Motivationsschreiben|motivation letter|мотиваційний лист
-das|Praktikum|internship|стажування
-die|Lehre|apprenticeship|професійне навчання (учнівство)
-der|Lehrling|apprentice|учень (на виробництві)
-der|Arbeitsmarkt|job market|ринок праці
-die|Referenz|reference|рекомендація
-die|Herausforderung|challenge|виклик
-die|Teamfähigkeit|ability to work in a team|уміння працювати в команді
-die|Belastbarkeit|resilience under pressure|стресостійкість|b2
-die|Eigeninitiative|initiative|ініціативність|b2
-die|Zuverlässigkeit|reliability|надійність|b2
-#buero
-das|Büro|office|офіс
-der|Computer|computer|комп'ютер
-der|Laptop|laptop|ноутбук
-der|Bildschirm|screen|екран
-die|Tastatur|keyboard|клавіатура
-die|E-Mail|e-mail (AT also: das E-Mail)|електронний лист
-der|Anhang|attachment|вкладення
-der|Brief|letter|лист
-das|Dokument|document|документ
-die|Datei|file|файл
-der|Ordner|folder|тека
-das|Formular|form|бланк, форма
-die|Unterschrift|signature|підпис
-der|Kalender|calendar|календар
-der|Schreibtisch|desk|письмовий стіл
-die|Pause|break|перерва
-der|Feierabend|end of the working day|кінець робочого дня
-die|Kaffeemaschine|coffee machine|кавоварка
-das|Wort|word|слово
-die|Vorlage|template|шаблон
-die|Nummer|number|номер
-der|Arbeitsplatz|workplace; job|робоче місце
-die|Kantine|staff canteen|їдальня (на роботі)
-der|Empfang|reception|рецепція
-die|Schicht|shift|зміна (робоча)
-die|Gleitzeit|flexitime|гнучкий графік
-die|Liste|list|список
-#firma
-die|Firma|company|фірма
-das|Unternehmen|company, enterprise|підприємство
-die|Abteilung|department|відділ
-die|Geschäftsführung|management (board)|керівництво компанії
-der|Geschäftsführer|managing director|генеральний директор
-die|Führungskraft|manager, leader|керівник
-der|Mitarbeiter|employee (m)|співробітник
-die|Mitarbeiterin|employee (f)|співробітниця
-das|Personal|staff, personnel|персонал
-die|Personalabteilung|HR department|відділ кадрів
-der|Standort|location, site|місцезнаходження
-das|Produkt|product|продукт
-der|Umsatz|revenue|оборот, виторг
-der|Gewinn|profit|прибуток
-die|Strategie|strategy|стратегія
-die|Unternehmenskultur|company culture|корпоративна культура|b2
-die|Konkurrenz|competition|конкуренція
-die|Schulung|training session|навчання, тренінг
-der|Kurs|course|курс
-die|Zertifizierung|certification|сертифікація
-das|Zertifikat|certificate|сертифікат
-die|Prüfung|exam, test|іспит
-die|Kompetenz|competence|компетенція
-die|Fähigkeit|ability, skill|здатність, навичка
-die|Leistung|performance, achievement|результативність, досягнення
-die|Branche|industry, sector|галузь
-die|Beförderung|promotion|підвищення (на посаді)|b2
-der|Betriebsrat|works council|рада працівників|b2
-#lohn
-das|Bruttogehalt|gross salary|зарплата брутто (до податків)
-das|Nettogehalt|net salary|зарплата нетто (після податків)
-der|Lohn|wage, pay|заробітна плата
-der|Kollektivvertrag|collective agreement|колективний договір|at
-der|Krankenstand|sick leave|лікарняний|at
-die|Überstunde|overtime hour|понаднормова година
-das|Urlaubsgeld|holiday pay|відпускні
-das|Weihnachtsgeld|Christmas bonus|різдвяна премія
-die|Pension|(retirement) pension|пенсія|at
-der|Bonus|bonus|бонус
-die|Gehaltsvorstellung|salary expectation|очікування щодо зарплати
-der|Stundenlohn|hourly wage|погодинна ставка
-die|Lohnabrechnung|payslip|розрахунковий листок
-die|Überweisung|bank transfer; (medical) referral|банківський переказ; направлення (до лікаря)
-die|Kündigungsfrist|notice period|термін попередження про звільнення
-der|Dienstgeber|employer|роботодавець|at
-der|Dienstnehmer|employee|працівник|at
-die|Karenz|parental leave|відпустка по догляду за дитиною|at
-die|Elternzeit|parental leave|відпустка по догляду за дитиною|de
-der|Zeitausgleich|time off in lieu|відгул за понаднормові|at
-die|Abfertigung|severance pay|вихідна допомога|at,b2
-der|Urlaubsantrag|leave request|заява на відпустку
-die|Krankmeldung|sick note|повідомлення про хворобу
-der|Tarifvertrag|collective agreement|колективний договір|de
-die|Abrechnung|statement, settlement|розрахунок
-die|Rente|pension|пенсія|de
-#pm
-das|Projekt|project|проєкт
-der|Projektmanager|project manager (m)|керівник проєкту
-die|Projektmanagerin|project manager (f)|керівниця проєкту
-der|Manager|manager (m)|менеджер
-das|Management|management|менеджмент
-der|Projektplan|project plan|план проєкту
-der|Zeitplan|schedule, timeline|графік
-die|Frist|deadline|термін, дедлайн
-der|Meilenstein|milestone|віха
-das|Ziel|goal|ціль, мета
-die|Aufgabe|task|завдання
-das|Budget|budget|бюджет
-der|Aufwand|effort|зусилля, трудовитрати
-die|Ressource|resource|ресурс
-das|Risiko|risk|ризик
-das|Risikomanagement|risk management|управління ризиками
-die|Anforderung|requirement|вимога
-der|Stakeholder|stakeholder|стейкхолдер
-der|Auftraggeber|client, principal|замовник
-der|Auftrag|order, assignment|доручення, замовлення
-der|Projektauftrag|project charter|статут проєкту
-die|Lösung|solution|розв'язання, вирішення
-das|Problem|problem|проблема
-die|Priorität|priority|пріоритет
-der|Fortschritt|progress|прогрес
-der|Bericht|report|звіт
-der|Statusbericht|status report|звіт про статус
-die|Dokumentation|documentation|документація
-die|Planung|planning|планування
-die|Umsetzung|implementation|реалізація
-der|Projektabschluss|project closure|завершення проєкту
-die|Verzögerung|delay|затримка
-die|Änderung|change|зміна
-das|Ergebnis|result|результат
-die|Qualität|quality|якість
-die|Abhängigkeit|dependency|залежність|b2
 die|Verantwortung|responsibility|відповідальність
-die|Entscheidung|decision|рішення (вибір)
-die|Projektleitung|project management (role)|керівництво проєктом
-die|Projektphase|project phase|фаза проєкту
-die|Freigabe|approval, release|затвердження
-der|Puffer|buffer|резерв (часу), буфер
-das|Lastenheft|requirements specification|технічне завдання замовника|b2
-das|Pflichtenheft|functional specification|технічна специфікація|b2
-die|Kennzahl|key figure, KPI|ключовий показник|b2
-der|Engpass|bottleneck|вузьке місце|b2
-#assist
-die|Assistenz|assistance (role)|асистування
-der|Assistent|assistant (m)|асистент
-die|Assistentin|assistant (f)|асистентка
-die|Ablage|filing|архів документів, діловодство
-die|Dienstreise|business trip|відрядження
-die|Teilnehmerliste|attendee list|список учасників
-der|Teilnehmer|participant (m)|учасник
-die|Teilnehmerin|participant (f)|учасниця
-die|Terminplanung|scheduling|планування зустрічей
-die|Erinnerung|reminder; memory|нагадування; спогад
-die|Tabelle|table, spreadsheet|таблиця
-die|Übersicht|overview|огляд
-die|Vertretung|substitute, cover|заміна, заступник
-die|Koordination|coordination|координація
-die|Reisekostenabrechnung|travel expense report|звіт про витрати на відрядження|b2
-#agile
-das|Team|team|команда
-der|Scrum Master|Scrum Master|Scrum Master
-der|Product Owner|product owner|власник продукту
-das|Backlog|backlog|беклог
-der|Sprint|sprint|спринт
-das|Daily|daily stand-up|щоденна нарада (Daily Scrum)
-das|Review|sprint review|огляд спринту
-die|Retrospektive|retrospective|ретроспектива
-das|Planning|sprint planning|планування спринту
-die|User Story|user story|користувацька історія
-das|Inkrement|increment|інкремент|b2
-das|Kanban-Board|Kanban board|Kanban-дошка
-die|Schätzung|estimate|оцінка (приблизна)
-die|Iteration|iteration|ітерація
-die|Methode|method|метод
-das|Framework|framework|фреймворк
-die|Zusammenarbeit|collaboration|співпраця
-die|Transparenz|transparency|прозорість|b2
-die|Verbesserung|improvement|покращення
-der|Wert|value|цінність, вартість
-das|Hindernis|obstacle, impediment|перешкода
-die|Rolle|role|роль
-das|Feedback|feedback|зворотний зв'язок
-die|Selbstorganisation|self-organisation|самоорганізація|b2
-die|Datenbank|database|база даних
-die|Schnittstelle|interface|інтерфейс, стик
-die|Entwicklung|development|розробка
-der|Entwickler|developer (m)|розробник
-die|Entwicklerin|developer (f)|розробниця
-der|Test|test|тест
-die|Analyse|analysis|аналіз
-der|Prozess|process|процес
-das|Refinement|backlog refinement|уточнення беклогу
-der|Story Point|story point|сторі-поінт
-#meet
-das|Meeting|meeting|зустріч, нарада
-die|Besprechung|discussion, meeting|нарада, обговорення
-die|Sitzung|session, meeting|засідання
-die|Tagesordnung|agenda|порядок денний
-das|Protokoll|minutes, record|протокол
-die|Präsentation|presentation|презентація
-die|Folie|slide|слайд
-der|Vorschlag|suggestion|пропозиція
-die|Videokonferenz|video conference|відеоконференція
-die|Absage|cancellation, refusal|відмова, скасування
-die|Zusage|confirmation, acceptance|згода, підтвердження
-die|Rückmeldung|reply, feedback|відповідь, відгук
-die|Abstimmung|coordination, vote|узгодження, голосування
-die|Vereinbarung|agreement|домовленість
-die|Zusammenfassung|summary|підсумок, резюме
-die|Kommunikation|communication|комунікація
-der|Workshop|workshop|воркшоп
-das|Brainstorming|brainstorming|мозковий штурм
-die|Moderation|facilitation|модерація
-der|Kompromiss|compromise|компроміс
-die|Rückfrage|follow-up question|уточнювальне питання
-die|Einigung|agreement|згода, домовленість|b2
-das|Fazit|conclusion|висновок|b2
+die|Religion|religion|релігія
+die|Moschee|mosque|мечеть
+die|Pflicht|duty|обов'язок
+die|Regel|rule|правило
+das|Verhalten|behaviour|поведінка
+der|Bürger|citizen|громадянин
+die|Bevölkerung|population|населення
+das|Bundesland|federal state|федеральна земля
+das|Parlament|parliament|парламент
+der|Abfall|waste|відходи
+das|Plastik|plastic|пластик
+der|Mistplatz|recycling centre|пункт прийому відходів|at
+der|Wertstoffhof|recycling centre|пункт прийому відходів|de
+die|Flucht|flight, escape|втеча
+der|Flüchtling|refugee|біженець
+die|Unterstützung|support|підтримка
+der|Bundespräsident|federal president|федеральний президент|b2
+die|Verschmutzung|pollution|забруднення|b2
+die|Armut|poverty|бідність|b2
+#feste
+der|Feiertag|public holiday|святковий день
+die|Tradition|tradition|традиція
+das|Fest|celebration, festival|свято
+der|Advent|Advent|адвент (передріздвяний час)
+der|Adventkranz|Advent wreath|адвентовий вінок|at
+der|Adventskranz|Advent wreath|адвентовий вінок|de
+der|Christbaum|Christmas tree|різдвяна ялинка|at
+der|Weihnachtsbaum|Christmas tree|різдвяна ялинка
+das|Christkind|Christ Child (brings the presents in Austria)|Христос-немовля (в Австрії приносить подарунки)
+der|Weihnachtsmann|Father Christmas|Санта-Клаус|de
+der|Krampus|Krampus (companion of St Nicholas)|Крампус (супутник святого Миколая)|at
+der|Nikolaus|St Nicholas|святий Миколай
+der|Christkindlmarkt|Christmas market|різдвяний ярмарок|at
+der|Weihnachtsmarkt|Christmas market|різдвяний ярмарок
+das|Neujahr|New Year's Day|Новий рік (1 січня)
+das|Feuerwerk|fireworks|феєрверк
+der|Fasching|carnival|карнавал (фашинг)|at
+der|Karneval|carnival|карнавал|de
+das|Kostüm|costume|костюм (маскарадний)
+das|Osterei|Easter egg|великоднє яйце, писанка
+der|Osterhase|Easter bunny|великодній заєць
+die|Taufe|baptism|хрещення
+der|Muttertag|Mother's Day|День матері
+der|Nationalfeiertag|national holiday|національне свято
+die|Kerze|candle|свічка
+der|Punsch|punch (hot drink)|пунш
+der|Glühwein|mulled wine|глінтвейн
+die|Gratulation|congratulations|привітання (з нагоди)
+der|Brauch|custom|звичай
+der|Ball|ball (dance; toy)|бал; м'яч
 `;
 const WORDS=[],BYW={};
 (function(){
@@ -1211,7 +1389,7 @@ const WORDS=[],BYW={};
   });
 })();
 // Wortpaare: [Deutschland / überall, Österreich]
-const PAIRS=[["Brötchen", "Semmel"], ["Tomate", "Paradeiser"], ["Kartoffel", "Erdapfel"], ["Sahne", "Obers"], ["Quark", "Topfen"], ["Aprikose", "Marille"], ["Blumenkohl", "Karfiol"], ["Meerrettich", "Kren"], ["Hackfleisch", "Faschierte"], ["Pfannkuchen", "Palatschinke"], ["Hähnchen", "Hendl"], ["Pilz", "Schwammerl"], ["Aubergine", "Melanzani"], ["Hörnchen", "Kipferl"], ["Pflaume", "Zwetschke"], ["Johannisbeere", "Ribisel"], ["Möhre", "Karotte"], ["Treppe", "Stiege"], ["Schrank", "Kasten"], ["Stuhl", "Sessel"], ["Kissen", "Polster"], ["Erdgeschoss", "Parterre"], ["Mülleimer", "Mistkübel"], ["Krankenhaus", "Spital"], ["Praxis", "Ordination"], ["Krankenwagen", "Rettung"], ["Straßenbahn", "Bim"], ["Bürgersteig", "Gehsteig"], ["Kneipe", "Beisl"], ["Kasse", "Kassa"], ["Tüte", "Sackerl"], ["Paket", "Packerl"], ["Metzger", "Fleischhauer"], ["Geldautomat", "Bankomat"], ["Girokarte", "Bankomatkarte"], ["Januar", "Jänner"], ["Mütze", "Haube"], ["T-Shirt", "Leiberl"], ["Kleidung", "Gewand"], ["Junge", "Bub"], ["Rentner", "Pensionist"], ["Rente", "Pension"], ["Grundschule", "Volksschule"], ["Abitur", "Matura"], ["Hausaufgabe", "Hausübung"], ["Kindergeld", "Familienbeihilfe"], ["Tarifvertrag", "Kollektivvertrag"], ["Elternzeit", "Karenz"], ["Arbeitgeber", "Dienstgeber"], ["Arbeitnehmer", "Dienstnehmer"]].map(p=>[BYW[p[0]],BYW[p[1]]]).filter(p=>p[0]&&p[1]);
+const PAIRS=[["Brötchen", "Semmel"], ["Tomate", "Paradeiser"], ["Kartoffel", "Erdapfel"], ["Sahne", "Obers"], ["Quark", "Topfen"], ["Aprikose", "Marille"], ["Blumenkohl", "Karfiol"], ["Meerrettich", "Kren"], ["Hackfleisch", "Faschierte"], ["Pfannkuchen", "Palatschinke"], ["Hähnchen", "Hendl"], ["Pilz", "Schwammerl"], ["Aubergine", "Melanzani"], ["Hörnchen", "Kipferl"], ["Pflaume", "Zwetschke"], ["Johannisbeere", "Ribisel"], ["Möhre", "Karotte"], ["Treppe", "Stiege"], ["Schrank", "Kasten"], ["Stuhl", "Sessel"], ["Kissen", "Polster"], ["Erdgeschoss", "Parterre"], ["Mülleimer", "Mistkübel"], ["Krankenhaus", "Spital"], ["Praxis", "Ordination"], ["Krankenwagen", "Rettung"], ["Straßenbahn", "Bim"], ["Bürgersteig", "Gehsteig"], ["Kneipe", "Beisl"], ["Kasse", "Kassa"], ["Tüte", "Sackerl"], ["Paket", "Packerl"], ["Metzger", "Fleischhauer"], ["Geldautomat", "Bankomat"], ["Girokarte", "Bankomatkarte"], ["Januar", "Jänner"], ["Mütze", "Haube"], ["T-Shirt", "Leiberl"], ["Kleidung", "Gewand"], ["Junge", "Bub"], ["Rentner", "Pensionist"], ["Rente", "Pension"], ["Grundschule", "Volksschule"], ["Abitur", "Matura"], ["Hausaufgabe", "Hausübung"], ["Kindergeld", "Familienbeihilfe"], ["Klempner", "Installateur"], ["Schornstein", "Rauchfang"], ["Schornsteinfeger", "Rauchfangkehrer"], ["Kühlschrank", "Eiskasten"], ["Bettdecke", "Tuchent"], ["Laken", "Leintuch"], ["Aufzug", "Lift"], ["Eimer", "Kübel"], ["Tasse", "Häferl"], ["Mais", "Kukuruz"], ["Kohl", "Kraut"], ["Schlagsahne", "Schlagobers"], ["Berliner", "Krapfen"], ["Nachtisch", "Nachspeise"], ["Hauptgericht", "Hauptspeise"], ["Kloß", "Knödel"], ["Erkältung", "Verkühlung"], ["Reißverschluss", "Zipp"], ["Aufkleber", "Pickerl"], ["Schranke", "Schranken"], ["Ski", "Schi"], ["Briefumschlag", "Kuvert"], ["Überweisungsträger", "Erlagschein"], ["Hausratversicherung", "Haushaltsversicherung"], ["Klassenarbeit", "Schularbeit"], ["Wertstoffhof", "Mistplatz"], ["Weihnachtsmarkt", "Christkindlmarkt"], ["Adventskranz", "Adventkranz"], ["Weihnachtsbaum", "Christbaum"], ["Karneval", "Fasching"], ["Staatsangehörigkeit", "Staatsbürgerschaft"]].map(p=>[BYW[p[0]],BYW[p[1]]]).filter(p=>p[0]&&p[1]);
 PAIRS.forEach(p=>{p[0].pair=p[1];p[1].pair=p[0];});
 
 const RULES=[
@@ -1232,9 +1410,9 @@ const RULES=[
   {s:'ik',a:'die',x:/eik$/i,t:'<b>-ik</b> ist meist <b>die</b>'},
   {s:'ie',a:'die',t:'<b>-ie</b> ist meist <b>die</b>'},
   {s:'in',a:'die',f:true,t:'<b>-in</b> bei Frauen ist immer <b>die</b>'},
-  {s:'e',a:'die',x:/(ee|date|code|office)$/i,t:'<b>-e</b> ist meist <b>die</b> (männliche Personen wie <b>der Kunde</b> sind Ausnahmen)'}
+  {s:'e',a:'die',x:/(ee|date|code|office|phone)$/i,t:'<b>-e</b> ist meist <b>die</b> (männliche Personen wie <b>der Kunde</b> sind Ausnahmen)'}
 ];
-const NOBASE=['Mittag','Familienbeihilfe','Freitag'];
+const NOBASE=["Mittag", "Familienbeihilfe", "Freitag", "Freundeskreis", "Schornstein", "Beschwerde", "Zebrastreifen", "Kontoauszug", "Wiederholung", "Friedhof", "Mitternacht"];
 function hintFor(e){
   const pre0=e.base?e.w.slice(0,e.w.length-e.base.w.length):'';
   if(e.base&&e.base.art===e.art&&pre0.length>=4&&NOBASE.indexOf(e.w)<0){
@@ -1259,78 +1437,48 @@ const OPTS={d:['der','die','das','den','dem','des'],i:['ein','eine','einen','ein
 // Präposition + Artikel = ein Wort (so spricht und schreibt man es fast immer)
 const CONTR={'in dem':'im','in das':'ins','an dem':'am','an das':'ans','zu dem':'zum','zu der':'zur','von dem':'vom','bei dem':'beim'};
 // N-Deklination: diese Nomen bekommen außer im Nominativ ein -(e)n
-const WEAK={Kollege:1,Kunde:1,Junge:1,Mensch:1,Nachbar:1,Neffe:1,Patient:1,Student:1,Assistent:1,Bub:1,Name:1};
+const WEAK={Kunde:1,Junge:1,Mensch:1,Nachbar:1,Neffe:1,Patient:1,Student:1,Bub:1,Name:1};
 const SRAW=`
 nom|Bus|___ Bus kommt in fünf Minuten.|Subjekt des Satzes|
 nom|Kaffee|Auf dem Tisch steht ___ Kaffee für dich.|Subjekt des Satzes|
-nom|Chef|___ Chef hat heute Geburtstag.|Subjekt des Satzes|d
 nom|Zug|___ Zug nach Salzburg hat zwanzig Minuten Verspätung.|Subjekt des Satzes|d
-nom|Computer|___ Computer im Büro ist leider kaputt.|Subjekt des Satzes|d
-nom|Kollege|Das ist ___ Kollege aus dem Marketing.|Nach „sein“ steht der Nominativ|
 nom|Termin|___ Termin beim Arzt ist morgen um zehn Uhr.|Subjekt des Satzes|d
-nom|Stakeholder|___ Stakeholder wünscht sich eine schnellere Lösung.|Subjekt des Satzes|
-nom|Sprint|___ Sprint dauert bei uns zwei Wochen.|Subjekt des Satzes|d
 nom|Fehler|Da ist ___ Fehler im Text.|Subjekt des Satzes|
 nom|Regenschirm|Auf dem Stuhl liegt ___ Regenschirm.|Subjekt des Satzes|
-nom|Lebenslauf|___ Lebenslauf ist fast fertig.|Subjekt des Satzes|d
 nom|Aufzug|Leider ist ___ Aufzug heute außer Betrieb.|Subjekt des Satzes|d
-nom|Projektmanager|___ Projektmanager leitet das ganze Team.|Subjekt des Satzes|d
 nom|Winter|___ Winter in Wien ist kalt und grau.|Subjekt des Satzes|d
 nom|Hund|Vor der Tür sitzt ___ Hund.|Subjekt des Satzes|
 nom|Vermieter|___ Vermieter kommt morgen wegen der Heizung vorbei.|Subjekt des Satzes|d
 nom|Frau|___ Frau am Empfang ist sehr freundlich.|Subjekt des Satzes|d
 nom|Küche|___ Küche ist klein, aber gemütlich.|Subjekt des Satzes|d
 nom|Wohnung|In unserem Haus ist ___ Wohnung frei.|Subjekt des Satzes|i
-nom|Besprechung|___ Besprechung beginnt um vierzehn Uhr.|Subjekt des Satzes|d
-nom|Kollegin|Das ist ___ Kollegin aus der Personalabteilung.|Nach „sein“ steht der Nominativ|
 nom|Straßenbahn|___ Straßenbahn fährt alle zehn Minuten.|Subjekt des Satzes|d
 nom|Miete|___ Miete ist in Wien ziemlich hoch.|Subjekt des Satzes|d
 nom|Lösung|Wir haben ein Problem, aber ___ Lösung ist einfach.|Subjekt des Satzes|d
 nom|Frist|___ Frist endet am Freitag.|Subjekt des Satzes|d
-nom|Präsentation|___ Präsentation dauert nur zehn Minuten.|Subjekt des Satzes|d
-nom|Datenbank|___ Datenbank ist heute sehr langsam.|Subjekt des Satzes|d
-nom|Bewerbung|Heute ist ___ Bewerbung für die Stelle angekommen.|Subjekt des Satzes|
 nom|Nachricht|Da ist ___ Nachricht von deiner Mutter.|Subjekt des Satzes|
 nom|Katze|Im Garten sitzt ___ Katze.|Subjekt des Satzes|
 nom|Tasche|Auf dem Sofa liegt ___ Tasche.|Subjekt des Satzes|
-nom|Chefin|Das ist ___ Chefin von unserem Team.|Nach „sein“ steht der Nominativ|d
-nom|Zusammenarbeit|___ Zusammenarbeit im Team funktioniert sehr gut.|Subjekt des Satzes|d
 nom|Toilette|Entschuldigung, wo ist ___ Toilette?|Subjekt des Satzes|
 nom|Kind|___ Kind spielt im Park.|Subjekt des Satzes|
 nom|Wetter|___ Wetter ist heute wunderschön.|Subjekt des Satzes|d
 nom|Restaurant|___ Restaurant an der Ecke ist sehr gut.|Subjekt des Satzes|d
-nom|Team|___ Team arbeitet heute im Homeoffice.|Subjekt des Satzes|d
 nom|Handy|Auf dem Tisch liegt ___ Handy.|Subjekt des Satzes|
-nom|Meeting|___ Meeting fängt gleich an.|Subjekt des Satzes|d
 nom|Zimmer|Im ersten Stock ist ___ Zimmer frei.|Subjekt des Satzes|i
-nom|Feedback|___ Feedback vom Kunden war sehr positiv.|Subjekt des Satzes|d
-nom|Budget|___ Budget für das Projekt ist leider knapp.|Subjekt des Satzes|d
 nom|Fenster|Es ist kalt, weil ___ Fenster offen ist.|Subjekt des Satzes|d
 nom|Ergebnis|___ Ergebnis der Prüfung kommt morgen.|Subjekt des Satzes|d
-nom|Backlog|___ Backlog ist noch nicht fertig.|Subjekt des Satzes|d
 nom|Mädchen|Vor der Tür steht ___ Mädchen.|Subjekt des Satzes|
 nom|Baby|___ Baby schläft endlich.|Subjekt des Satzes|d
 nom|Frühstück|___ Frühstück ist um acht Uhr.|Subjekt des Satzes|d
-akk|Laptop|Für die Arbeit brauche ich ___ Laptop.|brauchen + Akkusativ|
 akk|Kaffee|Ich bestelle ___ Kaffee mit Milch.|bestellen + Akkusativ|
 akk|Schlüssel|Ich suche schon seit einer Stunde ___ Schlüssel.|suchen + Akkusativ|d
-akk|Stuhl|Wir kaufen ___ Stuhl für das Büro.|kaufen + Akkusativ|
-akk|Lebenslauf|Bitte schicken Sie uns ___ Lebenslauf.|schicken + Akkusativ|d
 akk|Termin|Ich vereinbare morgen ___ Termin beim Zahnarzt.|vereinbaren + Akkusativ|i
-akk|Bus|Ich nehme jeden Morgen ___ Bus zur Arbeit.|nehmen + Akkusativ|d
-akk|Kollege|Ich rufe gleich ___ Kollegen an.|anrufen + Akkusativ|
-akk|Kunde|Morgen besuchen wir ___ Kunden in Graz.|besuchen + Akkusativ|
-akk|Projektplan|Die Chefin prüft ___ Projektplan.|prüfen + Akkusativ|d
-akk|Arbeitsvertrag|Morgen unterschreibe ich ___ Arbeitsvertrag.|unterschreiben + Akkusativ|
 akk|Hund|Meine Nachbarin hat ___ Hund.|haben + Akkusativ|i
 akk|Regenschirm|Nimm bitte ___ Regenschirm mit, es regnet.|mitnehmen + Akkusativ|
 akk|Kuchen|Zum Geburtstag backe ich ___ Kuchen.|backen + Akkusativ|i
-akk|Bericht|Heute schreibe ich noch ___ Bericht.|schreiben + Akkusativ|
-akk|Sprint|Der Scrum Master plant ___ Sprint mit dem Team.|planen + Akkusativ|
-akk|Product Owner|Wir stellen ___ Product Owner ein.|einstellen + Akkusativ|i
 akk|Zahnarzt|Ich suche ___ Zahnarzt in der Nähe.|suchen + Akkusativ|i
 akk|Ausweis|Bitte zeigen Sie mir ___ Ausweis.|zeigen + Akkusativ|d
-akk|Antrag|Ich stelle heute ___ Antrag beim AMS.|stellen + Akkusativ|
+akk|Antrag|Ich stelle heute ___ Antrag beim Magistrat.|stellen + Akkusativ|
 akk|Spaziergang|Nach dem Essen machen wir ___ Spaziergang.|machen + Akkusativ|i
 akk|Fisch|Zum Mittagessen esse ich heute ___ Fisch.|essen + Akkusativ|d
 akk|Salat|Ich hätte gern ___ Salat und ein Wasser.|haben + Akkusativ|i
@@ -1338,7 +1486,6 @@ akk|Wein|Zum Essen trinken wir ___ Wein.|trinken + Akkusativ|i
 akk|Park|Am Sonntag gehen wir durch ___ Park.|durch + Akkusativ|d
 akk|Baum|Das Auto fährt gegen ___ Baum.|gegen + Akkusativ|
 akk|Tisch|Die Kinder laufen um ___ Tisch herum.|um + Akkusativ|d
-akk|Chef|Wir sammeln Geld für ___ Chef, er wird fünfzig.|für + Akkusativ|d
 akk|Zug|Wir müssen unbedingt ___ Zug um acht Uhr erreichen.|erreichen + Akkusativ|d
 akk|Freund|Ich lade ___ Freund zum Essen ein.|einladen + Akkusativ|i
 akk|Kind|Ich hole ___ Kind um vier Uhr von der Schule ab.|abholen + Akkusativ|d
@@ -1347,96 +1494,58 @@ akk|Arzt|Die Patientin fragt ___ Arzt nach den Medikamenten.|fragen + Akkusativ|
 akk|Wohnung|Wir suchen ___ Wohnung in der Nähe der U-Bahn.|suchen + Akkusativ|i
 akk|Rechnung|Ich bezahle heute noch ___ Rechnung.|bezahlen + Akkusativ|
 akk|Tasche|Ich packe ___ Tasche für den Urlaub.|packen + Akkusativ|
-akk|Kollegin|Ich frage ___ Kollegin um Rat.|fragen + Akkusativ|
-akk|Präsentation|Ich bereite morgen ___ Präsentation vor.|vorbereiten + Akkusativ|
 akk|Nachricht|Ich habe gestern ___ Nachricht von dir erhalten.|erhalten + Akkusativ|
 akk|Fahrkarte|Am Automaten kaufe ich ___ Fahrkarte.|kaufen + Akkusativ|
-akk|Stelle|Ich bewerbe mich auf ___ Stelle bei einem Wiener Unternehmen.|sich bewerben auf + Akkusativ|
 akk|Miete|Jeden Monat zahle ich ___ Miete pünktlich.|zahlen + Akkusativ|d
 akk|Katze|Im Garten streichelt das Kind ___ Katze.|streicheln + Akkusativ|
 akk|Frage|Darf ich Ihnen ___ Frage stellen?|stellen + Akkusativ|i
-akk|Aufgabe|Ich übernehme gern ___ Aufgabe im Projekt.|übernehmen + Akkusativ|
 akk|Tomate|Für den Salat schneide ich ___ Tomate.|schneiden + Akkusativ|
 akk|Milch|Ich hole schnell ___ Milch aus dem Supermarkt.|holen + Akkusativ|d
-akk|Steuernummer|Bitte geben Sie ___ Steuernummer an.|angeben + Akkusativ|d
-akk|Zusage|Nach dem Interview bekommt sie ___ Zusage.|bekommen + Akkusativ|
-akk|Firma|Er gründet ___ Firma.|gründen + Akkusativ|i
 akk|Nachbarin|Das Geschenk ist für ___ Nachbarin.|für + Akkusativ|
 akk|Brille|Ohne ___ Brille kann ich nichts lesen.|ohne + Akkusativ|d
-akk|Buch|Ich lese gerade ___ Buch über Scrum.|lesen + Akkusativ|
 akk|Brot|Auf dem Heimweg kaufe ich ___ Brot.|kaufen + Akkusativ|
 akk|Auto|Mein Vater verkauft ___ Auto.|verkaufen + Akkusativ|
 akk|Fenster|Bitte schließe ___ Fenster, es ist kalt.|schließen + Akkusativ|d
 akk|Formular|Ich fülle noch ___ Formular aus.|ausfüllen + Akkusativ|
 akk|Handy|Ich habe ___ Handy zu Hause vergessen.|vergessen + Akkusativ|d
 akk|Kind|Wir bringen ___ Kind in den Kindergarten.|bringen + Akkusativ|d
-akk|Protokoll|Wer führt heute ___ Protokoll?|führen + Akkusativ|d
-akk|Projekt|Sie leitet ___ Projekt seit einem Jahr.|leiten + Akkusativ|
-akk|Daily|Der Scrum Master moderiert jeden Morgen ___ Daily.|moderieren + Akkusativ|d
-akk|Angebot|Die Firma macht mir ___ Angebot.|machen + Akkusativ|i
 akk|Zertifikat|Am Ende des Kurses bekommst du ___ Zertifikat.|bekommen + Akkusativ|
-akk|Gehalt|Morgen besprechen wir ___ Gehalt.|besprechen + Akkusativ|d
 akk|Hotel|Für den Urlaub buchen wir ___ Hotel am Meer.|buchen + Akkusativ|
 akk|Ziel|Bis Ende Juni erreichen wir ___ Ziel.|erreichen + Akkusativ|d
 akk|Medikament|Der Arzt verschreibt mir ___ Medikament.|verschreiben + Akkusativ|
 akk|Baby|Sie trägt ___ Baby auf dem Arm.|tragen + Akkusativ|d
-akk|Feedback|Der Chef gibt uns ___ Feedback.|geben + Akkusativ|d
-akk|Meeting|Die Assistentin organisiert ___ Meeting für Freitag.|organisieren + Akkusativ|
 akk|Restaurant|Wir kennen ___ Restaurant in der Nähe.|kennen + Akkusativ|
-dat|Kollege|Ich helfe ___ Kollegen bei der Präsentation.|helfen + Dativ|
-dat|Kunde|Wir antworten ___ Kunden noch heute.|antworten + Dativ|
-dat|Chef|Ich gratuliere ___ Chef zum Geburtstag.|gratulieren + Dativ|d
-dat|Bus|Ich komme jeden Tag mit ___ Bus zur Arbeit.|mit + Dativ|d
 dat|Arzt|Ich gehe morgen zu ___ Arzt.|zu + Dativ|
 dat|Nachbar|Das Fahrrad gehört ___ Nachbarn.|gehören + Dativ|
 dat|Freund|Ich schreibe ___ Freund eine Nachricht.|schreiben + Dativ|i
-dat|Product Owner|Der Scrum Master hört ___ Product Owner aufmerksam zu.|zuhören + Dativ|d
-dat|Stakeholder|Wir schicken ___ Stakeholder den Statusbericht.|schicken + Dativ|
 dat|Urlaub|Seit ___ Urlaub bin ich viel entspannter.|seit + Dativ|d
 dat|Supermarkt|Der Weg von ___ Supermarkt nach Hause ist kurz.|von + Dativ|d
 dat|Bahnhof|Der Bus fährt direkt von ___ Bahnhof ab.|von + Dativ|d
 dat|Geburtstag|Zu ___ Geburtstag bekommt sie Blumen.|zu + Dativ|d
-dat|Mitarbeiter|Die Chefin dankt ___ Mitarbeiter für seine Hilfe.|danken + Dativ|
 dat|Flughafen|Das Taxi fährt direkt zu ___ Flughafen.|zu + Dativ|d
 dat|Sport|Nach ___ Sport dusche ich immer.|nach + Dativ|d
-dat|Chef|Ich wünsche ___ Chef ein schönes Wochenende.|wünschen + Dativ|d
-dat|Laptop|Ich arbeite gern mit ___ Laptop.|mit + Dativ|
+dat|Laptop|Ich lerne gern mit ___ Laptop.|mit + Dativ|
 dat|Zug|Am Bahnhof steigen viele Leute aus ___ Zug aus.|aus + Dativ|d
 dat|Kind|Die Oma kauft ___ Kind ein Eis.|kaufen + Dativ|d
-dat|Team|Ich erkläre ___ Team die neue Methode.|erklären + Dativ|d
-dat|Meeting|Ich komme direkt aus ___ Meeting.|aus + Dativ|d
 dat|Mädchen|Ich gebe ___ Mädchen einen Apfel.|geben + Dativ|
 dat|Baby|Die Mutter singt ___ Baby ein Lied vor.|vorsingen + Dativ|d
 dat|Auto|Mein Bruder kommt mit ___ Auto.|mit + Dativ|d
-dat|Unternehmen|Ich arbeite seit drei Jahren bei ___ Unternehmen in Wien.|bei + Dativ|i
-dat|Projekt|Ich arbeite gerade an ___ Projekt für einen Kunden.|arbeiten an + Dativ|i
 dat|Handy|Der Akku von ___ Handy ist leer.|von + Dativ|d
 dat|Essen|Nach ___ Essen trinken wir Tee.|nach + Dativ|d
 dat|Ergebnis|Ich bin mit ___ Ergebnis sehr zufrieden.|zufrieden mit + Dativ|d
 dat|Hotel|Der Strand ist nur fünf Minuten von ___ Hotel entfernt.|von + Dativ|d
 dat|Zentrum|Die U-Bahn fährt bis zu ___ Zentrum.|bis zu + Dativ|d
 dat|Krankenhaus|Ich fahre gleich zu ___ Krankenhaus.|zu + Dativ|d
-dat|Kollegin|Ich schicke ___ Kollegin die Unterlagen.|schicken + Dativ|
 dat|Frau|Der Mann hilft ___ Frau mit dem Koffer.|helfen + Dativ|
-dat|Chefin|Ich antworte ___ Chefin per E-Mail.|antworten + Dativ|d
 dat|Freundin|Ich telefoniere jeden Abend mit ___ Freundin.|mit + Dativ|i
 dat|Nachbarin|Ich bringe ___ Nachbarin ein Stück Kuchen mit.|mitbringen + Dativ|
-dat|Firma|Der Chef von ___ Firma hat angerufen.|von + Dativ|d
-dat|Bibliothek|Nach der Arbeit gehe ich zu ___ Bibliothek.|zu + Dativ|d
 dat|Apotheke|Ich komme gerade aus ___ Apotheke.|aus + Dativ|d
-dat|Präsentation|Nach ___ Präsentation gibt es Kaffee.|nach + Dativ|d
-dat|Bewerbung|Ich helfe meiner Freundin bei ___ Bewerbung.|bei + Dativ|
 dat|Krankenversicherung|Ich bin bei ___ Krankenversicherung angemeldet.|bei + Dativ|d
 dat|Katze|Ich gebe ___ Katze etwas zu fressen.|geben + Dativ|d
-dat|Kundin|Ich erkläre ___ Kundin das Angebot.|erklären + Dativ|
-dat|Mitarbeiterin|Wir gratulieren ___ Mitarbeiterin zum Jubiläum.|gratulieren + Dativ|
 dat|Wohnung|Ich habe die Schlüssel zu ___ Wohnung verloren.|zu + Dativ|d
 wod|Küche|Die Kinder frühstücken in ___ Küche.|in + Wo? = Dativ|d
 woa|Küche|Ich gehe schnell in ___ Küche und mache Kaffee.|in + Wohin? = Akkusativ|d
 wod|Park|Am Sonntag sind wir den ganzen Tag in ___ Park.|in + Wo? = Dativ|d
-woa|Park|Nach der Arbeit gehe ich in ___ Park.|in + Wohin? = Akkusativ|d
-wod|Büro|Ich arbeite in ___ Büro im dritten Stock.|in + Wo? = Dativ|
-woa|Büro|Um acht Uhr gehe ich in ___ Büro.|in + Wohin? = Akkusativ|d
 wod|Keller|Das Fahrrad steht in ___ Keller.|in + Wo? = Dativ|d
 woa|Keller|Ich stelle das Fahrrad in ___ Keller.|in + Wohin? = Akkusativ|d
 wod|Bibliothek|Sie lernt oft in ___ Bibliothek.|in + Wo? = Dativ|d
@@ -1449,10 +1558,8 @@ wod|Hotel|Wir übernachten in ___ Hotel.|in + Wo? = Dativ|
 woa|Hotel|Nach der Reise fahren wir in ___ Hotel.|in + Wohin? = Akkusativ|
 wod|Wohnung|Es ist warm in ___ Wohnung.|in + Wo? = Dativ|d
 woa|Wohnung|Ich gehe in ___ Wohnung und koche.|in + Wohin? = Akkusativ|d
-wod|Supermarkt|Ich arbeite in ___ Supermarkt.|in + Wo? = Dativ|
+wod|Supermarkt|Ich treffe meine Nachbarin in ___ Supermarkt.|in + Wo? = Dativ|d
 woa|Supermarkt|Ich gehe schnell in ___ Supermarkt.|in + Wohin? = Akkusativ|
-wod|Personalabteilung|Meine Kollegin arbeitet in ___ Personalabteilung.|in + Wo? = Dativ|d
-woa|Personalabteilung|Ich gehe kurz in ___ Personalabteilung.|in + Wohin? = Akkusativ|d
 wod|Tisch|Die Blumen stehen auf ___ Tisch.|auf + Wo? = Dativ|d
 woa|Tisch|Ich stelle die Blumen auf ___ Tisch.|auf + Wohin? = Akkusativ|d
 wod|Bett|Das Buch liegt auf ___ Bett.|auf + Wo? = Dativ|d
@@ -1467,54 +1574,20 @@ wod|Tür|Vor ___ Tür steht ein Paket.|vor + Wo? = Dativ|d
 woa|Tür|Ich stelle das Paket vor ___ Tür.|vor + Wohin? = Akkusativ|d
 wod|Herd|Der Topf steht auf ___ Herd.|auf + Wo? = Dativ|d
 woa|Herd|Ich stelle den Topf auf ___ Herd.|auf + Wohin? = Akkusativ|d
-wod|Schreibtisch|Der Laptop steht auf ___ Schreibtisch.|auf + Wo? = Dativ|d
-woa|Schreibtisch|Ich stelle den Laptop auf ___ Schreibtisch.|auf + Wohin? = Akkusativ|d
 wod|Zimmer|Mein Laptop liegt in ___ Zimmer.|in + Wo? = Dativ|d
 woa|Zimmer|Bring bitte die Kisten in ___ Zimmer.|in + Wohin? = Akkusativ|d
 wod|Zentrum|Wir wohnen in ___ Zentrum.|in + Wo? = Dativ|d
 woa|Zentrum|Am Samstag fahren wir in ___ Zentrum.|in + Wohin? = Akkusativ|d
-gen|Projekt|Das Ziel ___ Projekts ist eine neue App für unsere Kunden.|Wessen Ziel? → Genitiv|d
-gen|Kollege|Heute fahre ich mit dem Auto ___ Kollegen zur Arbeit.|Wessen Auto? → Genitiv|i
-gen|Firma|Der Name ___ Firma steht auf dem Schild.|Wessen Name? → Genitiv|d
-gen|Monat|Am Ende ___ Monats bekomme ich mein Gehalt.|am Ende + Genitiv|d
-gen|Woche|Am Anfang ___ Woche haben wir viele Meetings.|am Anfang + Genitiv|d
 gen|Wetter|Wegen ___ Wetters bleiben wir heute zu Hause.|wegen + Genitiv|d
 gen|Regen|Trotz ___ Regens gehen wir spazieren.|trotz + Genitiv|d
-gen|Meeting|Während ___ Meetings ist das Handy aus.|während + Genitiv|
-gen|Präsentation|Während ___ Präsentation stellt der Chef viele Fragen.|während + Genitiv|
-gen|Verspätung|Wegen ___ Verspätung komme ich zu spät zur Arbeit.|wegen + Genitiv|
-gen|Krankheit|Wegen ___ Krankheit kann sie diese Woche nicht arbeiten.|wegen + Genitiv|i
+gen|Krankheit|Wegen ___ Krankheit kann sie diese Woche nicht in den Kurs kommen.|wegen + Genitiv|i
 gen|Woche|Innerhalb ___ Woche bekommen Sie eine Antwort.|innerhalb + Genitiv|i
-gen|Stunde|Die IT löst das Problem innerhalb ___ Stunde.|innerhalb + Genitiv|i
 gen|Stadt|Wir wohnen außerhalb ___ Stadt.|außerhalb + Genitiv|d
-gen|Arbeitszeit|Außerhalb ___ Arbeitszeit lese ich keine E-Mails.|außerhalb + Genitiv|d
-gen|Kunde|Die Wünsche ___ Kunden sind für uns wichtig.|Wessen Wünsche? → Genitiv|d
-gen|Team|Die Meinung ___ Teams ist mir wichtig.|Wessen Meinung? → Genitiv|d
-gen|Sprint|Am Ende ___ Sprints gibt es immer ein Review.|am Ende + Genitiv|
-gen|Product Owner|Die Entscheidungen ___ Product Owners basieren auf dem Feedback der Kunden.|Wessen Entscheidungen? → Genitiv|d
-gen|Scrum Master|Eine Aufgabe ___ Scrum Masters ist es, Hindernisse zu beseitigen.|Wessen Aufgabe? → Genitiv|d
-gen|Backlog|Die Pflege ___ Backlogs ist Aufgabe des Product Owners.|Genitiv: die Pflege des Backlogs|d
-gen|Stakeholder|Die Erwartungen ___ Stakeholders sind sehr hoch.|Wessen Erwartungen? → Genitiv|d
-gen|Meilenstein|Nach dem Erreichen ___ Meilensteins feiern wir kurz im Team.|Genitiv: das Erreichen des Meilensteins|
-gen|Daily|Während ___ Dailys spricht jede Person kurz über ihre Aufgaben.|während + Genitiv|d
-gen|Retrospektive|Das Ziel ___ Retrospektive ist ständige Verbesserung.|Wessen Ziel? → Genitiv|d
-gen|Vertrag|Bitte lesen Sie die Bedingungen ___ Vertrags genau.|Wessen Bedingungen? → Genitiv|d
 gen|Mietvertrag|Die Dauer ___ Mietvertrags beträgt drei Jahre.|Genitiv: die Dauer des Mietvertrags|d
 gen|Wohnung|Die Miete ___ Wohnung ist ziemlich hoch.|Wessen Miete? → Genitiv|d
 gen|Haus|Der Eingang ___ Hauses ist auf der Rückseite.|Wessen Eingang? → Genitiv|d
 gen|Arzt|Die Ordination ___ Arztes ist im zweiten Stock.|Wessen Ordination? → Genitiv|d
-gen|Chef|Das Büro ___ Chefs ist am Ende des Gangs.|Wessen Büro? → Genitiv|d
-gen|Chefin|Die Entscheidung ___ Chefin ist endgültig.|Wessen Entscheidung? → Genitiv|d
-gen|Bericht|Der Inhalt ___ Berichts ist vertraulich.|Genitiv: der Inhalt des Berichts|d
-gen|Ergebnis|Die Analyse ___ Ergebnisses dauert noch zwei Tage.|Genitiv: die Analyse des Ergebnisses|d
-gen|Budget|Die Planung ___ Budgets beginnt im Herbst.|Genitiv: die Planung des Budgets|d
-gen|Risiko|Die Bewertung ___ Risikos ist Teil der Planung.|Genitiv: die Bewertung des Risikos|d
-gen|Stelle|Die Beschreibung ___ Stelle finden Sie auf unserer Website.|Genitiv: die Beschreibung der Stelle|d
-gen|Bewerbung|Nach dem Absenden ___ Bewerbung bekommen Sie eine Bestätigung.|Genitiv: das Absenden der Bewerbung|d
-gen|Lebenslauf|Die erste Seite ___ Lebenslaufs ist am wichtigsten.|Genitiv: die erste Seite des Lebenslaufs|d
-gen|Vorstellungsgespräch|Am Ende ___ Vorstellungsgesprächs dürfen Sie Fragen stellen.|am Ende + Genitiv|
-gen|Probezeit|Während ___ Probezeit lernt man das Team gut kennen.|während + Genitiv|d
-gen|Urlaub|Während ___ Urlaubs lese ich keine E-Mails.|während + Genitiv|d
+gen|Ergebnis|Wegen ___ Ergebnisses beim Bluttest muss ich noch einmal zum Arzt.|wegen + Genitiv|d
 gen|Winter|Während ___ Winters ist es in Wien oft grau.|während + Genitiv|d
 gen|Stau|Wegen ___ Staus komme ich eine halbe Stunde später.|wegen + Genitiv|
 gen|Streik|Wegen ___ Streiks fahren heute keine Züge.|wegen + Genitiv|
@@ -1528,21 +1601,13 @@ gen|Zug|Die Abfahrt ___ Zuges verzögert sich um zehn Minuten.|Genitiv: die Abfa
 gen|Flughafen|Das Hotel liegt in der Nähe ___ Flughafens.|in der Nähe + Genitiv|d
 gen|Bahnhof|In der Nähe ___ Bahnhofs gibt es ein gutes Café.|in der Nähe + Genitiv|d
 gen|Fluss|Am Ufer ___ Flusses kann man gut spazieren gehen.|Genitiv: das Ufer des Flusses|d
-gen|Software|Die neue Version ___ Software kommt im Mai.|Genitiv: die Version der Software|d
-gen|System|Die Sicherheit ___ Systems hat oberste Priorität.|Genitiv: die Sicherheit des Systems|d
-gen|Fehler|Wegen ___ Fehlers in der Datenbank funktioniert die App nicht.|wegen + Genitiv|
-gen|Update|Nach der Installation ___ Updates startet der Computer neu.|Genitiv: die Installation des Updates|d
 gen|Auto|Statt ___ Autos nehme ich heute das Fahrrad.|statt + Genitiv|d
 gen|Tag|Im Laufe ___ Tages rufe ich Sie zurück.|im Laufe + Genitiv|d
-gen|Jahr|Bis zum Ende ___ Jahres ist das Projekt fertig.|Genitiv: das Ende des Jahres|d
-gen|Abteilung|Die Leiterin ___ Abteilung heißt Frau Novak.|Wessen Leiterin? → Genitiv|d
-gen|Unternehmen|Die Mitarbeiter ___ Unternehmens kommen aus zwölf Ländern.|Wessen Mitarbeiter? → Genitiv|d
 gen|Termin|Wegen ___ Termins beim Zahnarzt komme ich heute später.|wegen + Genitiv|
 gen|Kurs|Am Ende ___ Kurses gibt es eine Prüfung.|am Ende + Genitiv|
 gen|Prüfung|Nach dem Bestehen ___ Prüfung bekommt man ein Zertifikat.|Genitiv: das Bestehen der Prüfung|d
 gen|Antrag|Die Bearbeitung ___ Antrags dauert etwa sechs Wochen.|Genitiv: die Bearbeitung des Antrags|d
 gen|Aufenthaltstitel|Die Verlängerung ___ Aufenthaltstitels muss man rechtzeitig beantragen.|Genitiv: die Verlängerung des Aufenthaltstitels|d
-gen|Gehalt|Die Höhe ___ Gehalts hängt auch von der Erfahrung ab.|Genitiv: die Höhe des Gehalts|d
 gen|Familie|Die Unterstützung ___ Familie ist mir sehr wichtig.|Wessen Unterstützung? → Genitiv|d
 gen|Lehrerin|Das Lob ___ Lehrerin hat mich sehr motiviert.|Wessen Lob? → Genitiv|d
 gen|Krankenhaus|Der Eingang ___ Krankenhauses ist rund um die Uhr offen.|Genitiv: der Eingang des Krankenhauses|d
@@ -1554,25 +1619,15 @@ nom|Stau|Auf der Autobahn ist ___ Stau.|Subjekt des Satzes|i
 nom|Gewitter|Am Abend kommt ___ Gewitter.|Subjekt des Satzes|i
 nom|Trafik|___ Trafik an der Ecke verkauft auch Fahrscheine.|Subjekt des Satzes|d
 nom|Stiege|___ Stiege ist frisch geputzt, bitte Vorsicht!|Subjekt des Satzes|d
-nom|Workshop|___ Workshop beginnt um neun Uhr im großen Raum.|Subjekt des Satzes|d
 nom|Lehrerin|___ Lehrerin erklärt die Grammatik sehr gut.|Subjekt des Satzes|d
-nom|Drucker|___ Drucker im Büro funktioniert schon wieder nicht.|Subjekt des Satzes|d
 nom|Paket|Für dich ist ___ Paket gekommen.|Subjekt des Satzes|i
 nom|Rettung|___ Rettung ist in fünf Minuten da.|Subjekt des Satzes|d
-nom|Assistentin|___ Assistentin schickt die Einladung an alle Teilnehmer.|Subjekt des Satzes|d
-nom|Dienstreise|___ Dienstreise nach Linz dauert zwei Tage.|Subjekt des Satzes|d
 nom|Kindergarten|___ Kindergarten ist gleich um die Ecke.|Subjekt des Satzes|d
-nom|Kantine|___ Kantine hat heute ein vegetarisches Menü.|Subjekt des Satzes|d
 akk|Sackerl|Brauchen Sie ___ Sackerl?|brauchen + Akkusativ|i
 akk|Semmel|Zum Frühstück esse ich ___ Semmel mit Butter.|essen + Akkusativ|i
 akk|Matura|Mein Sohn macht nächstes Jahr ___ Matura.|machen + Akkusativ|d
 akk|Paket|Ich hole morgen ___ Paket von der Post ab.|abholen + Akkusativ|
 akk|Gutschein|Zum Geburtstag schenke ich ihr ___ Gutschein.|schenken + Akkusativ|i
-akk|Workshop|Die Firma organisiert ___ Workshop zum Thema Scrum.|organisieren + Akkusativ|i
-akk|Teilnehmerliste|Die Assistentin aktualisiert ___ Teilnehmerliste.|aktualisieren + Akkusativ|d
-akk|Dienstreise|Ich plane ___ Dienstreise nach Graz.|planen + Akkusativ|i
-akk|Urlaubsantrag|Ich stelle heute ___ Urlaubsantrag für August.|stellen + Akkusativ|i
-akk|Praktikum|Sie macht ___ Praktikum bei einer Bank.|machen + Akkusativ|i
 akk|Ladegerät|Hast du ___ Ladegerät für mein Handy?|haben + Akkusativ|i
 akk|Bankomatkarte|Ich habe ___ Bankomatkarte im Geschäft vergessen.|vergessen + Akkusativ|d
 akk|Strafzettel|Leider bekomme ich ___ Strafzettel.|bekommen + Akkusativ|i
@@ -1580,28 +1635,17 @@ akk|Wanderung|Am Wochenende machen wir ___ Wanderung im Wienerwald.|machen + Akk
 akk|Umzug|Wir planen ___ Umzug für Ende März.|planen + Akkusativ|d
 akk|Kompromiss|Am Ende finden wir ___ Kompromiss.|finden + Akkusativ|i
 akk|Fremdsprache|Jedes Kind lernt in der Schule ___ Fremdsprache.|lernen + Akkusativ|i
-akk|Freigabe|Wir brauchen noch ___ Freigabe vom Kunden.|brauchen + Akkusativ|d
-akk|Übersicht|Die Assistentin erstellt ___ Übersicht über alle Termine.|erstellen + Akkusativ|i
-akk|Refinement|Das Team macht jeden Mittwoch ___ Refinement.|machen + Akkusativ|d
 dat|Lehrerin|Die Kinder schenken ___ Lehrerin Blumen.|schenken + Dativ|
 dat|Gast|Der Kellner bringt ___ Gast die Rechnung.|bringen + Dativ|
 dat|Schüler|Die Lehrerin spricht mit ___ Schüler über seine Noten.|mit + Dativ|
 dat|Mutter|Das Kind läuft schnell zu ___ Mutter.|zu + Dativ|d
 dat|Kundin|Die Verkäuferin zeigt ___ Kundin eine neue Jacke.|zeigen + Dativ|
-dat|Assistentin|Ich gebe ___ Assistentin die Unterlagen für das Meeting.|geben + Dativ|
-dat|Teilnehmer|Die Moderatorin dankt ___ Teilnehmer für die gute Frage.|danken + Dativ|
 dat|Fleischhauer|Ich kaufe das Fleisch immer bei ___ Fleischhauer.|bei + Dativ|d
 dat|Bäckerei|Ich hole die Semmeln aus ___ Bäckerei.|aus + Dativ|d
-dat|Workshop|Nach ___ Workshop gibt es ein kleines Buffet.|nach + Dativ|d
-dat|Dienstgeber|Ich schicke ___ Dienstgeber die Krankmeldung.|schicken + Dativ|d
-dat|Lehrling|Der Chef erklärt ___ Lehrling die Maschine.|erklären + Dativ|
 dat|Mieter|Die Hausverwaltung schickt ___ Mieter einen Brief.|schicken + Dativ|
-dat|Kollege|Wir gratulieren ___ Kollegen zur Beförderung.|gratulieren + Dativ|
 wod|Ordination|Die Ärztin ist heute bis 18 Uhr in ___ Ordination.|in + Wo? = Dativ|d
 wod|Trafik|Die Zeitung kaufe ich in ___ Trafik an der Ecke.|in + Wo? = Dativ|d
 wod|Stau|Ich stehe seit einer Stunde in ___ Stau.|in + Wo? = Dativ|d
-wod|Kantine|Mittags essen wir in ___ Kantine.|in + Wo? = Dativ|d
-woa|Kantine|Um zwölf gehen wir in ___ Kantine.|in + Wohin? = Akkusativ|d
 wod|Kasten|Die Handtücher liegen in ___ Kasten.|in + Wo? = Dativ|d
 woa|Kasten|Ich lege die Handtücher in ___ Kasten.|in + Wohin? = Akkusativ|d
 wod|Regal|Die Bücher stehen in ___ Regal.|in + Wo? = Dativ|d
@@ -1645,13 +1689,192 @@ dat|Lieferung|Bei ___ Lieferung müssen Sie unterschreiben.|bei + Dativ|d
 wod|Ecke|Das Café ist gleich an ___ Ecke.|an + Wo? = Dativ|d
 woa|Brücke|Wir gehen über ___ Brücke ins Zentrum.|über + Wohin? = Akkusativ|d
 wod|Fitnessstudio|Ich trainiere dreimal pro Woche in ___ Fitnessstudio.|in + Wo? = Dativ|d
-woa|Fitnessstudio|Nach der Arbeit gehe ich in ___ Fitnessstudio.|in + Wohin? = Akkusativ|d
 wod|Kühlschrank|Die Milch steht in ___ Kühlschrank.|in + Wo? = Dativ|d
 woa|Kühlschrank|Stell die Milch bitte in ___ Kühlschrank.|in + Wohin? = Akkusativ|d
 wod|Badewanne|Das Kind sitzt in ___ Badewanne.|in + Wo? = Dativ|d
 wod|Wiese|Die Kinder spielen auf ___ Wiese.|auf + Wo? = Dativ|d
 woa|Wiese|Wir legen die Decke auf ___ Wiese.|auf + Wohin? = Akkusativ|d
 wod|Bank|Ich sitze auf ___ Bank im Park.|auf + Wo? = Dativ|d
+nom|Installateur|___ Installateur kommt morgen um acht Uhr.|Subjekt des Satzes|d
+nom|Wasserhahn|___ Wasserhahn in der Küche tropft.|Subjekt des Satzes|d
+nom|Kinderarzt|___ Kinderarzt hat am Mittwoch keine Ordination.|Subjekt des Satzes|d
+nom|Wartezimmer|___ Wartezimmer ist heute sehr voll.|Subjekt des Satzes|d
+nom|Briefträger|___ Briefträger bringt die Post schon um neun Uhr.|Subjekt des Satzes|d
+nom|Elternabend|___ Elternabend ist am Donnerstag um 18 Uhr.|Subjekt des Satzes|d
+nom|Schularbeit|Morgen ist ___ Schularbeit in Mathematik.|Subjekt des Satzes|
+nom|Christkindlmarkt|___ Christkindlmarkt vor dem Rathaus ist sehr schön.|Subjekt des Satzes|d
+nom|Fasching|___ Fasching beginnt am 11. November.|Subjekt des Satzes|d
+nom|Lärm|___ Lärm von der Baustelle stört mich.|Subjekt des Satzes|d
+nom|Hausordnung|___ Hausordnung hängt im Treppenhaus.|Subjekt des Satzes|d
+nom|Reifen|___ Reifen ist kaputt.|Subjekt des Satzes|
+nom|Anschluss|___ Anschluss nach Linz fährt von Gleis 4.|Subjekt des Satzes|d
+nom|Briefkasten|___ Briefkasten ist schon wieder voll.|Subjekt des Satzes|d
+nom|Kellner|___ Kellner bringt gleich die Speisekarte.|Subjekt des Satzes|d
+nom|Fernseher|___ Fernseher im Wohnzimmer ist zu laut.|Subjekt des Satzes|d
+nom|Wecker|___ Wecker klingelt jeden Tag um sechs Uhr.|Subjekt des Satzes|d
+nom|Spielplatz|Hinter dem Haus ist ___ Spielplatz.|Subjekt des Satzes|i
+nom|Christbaum|Im Wohnzimmer steht ___ Christbaum.|Subjekt des Satzes|
+nom|Kurs|___ Kurs beginnt im Jänner.|Subjekt des Satzes|d
+nom|Prüfung|___ Prüfung dauert ungefähr drei Stunden.|Subjekt des Satzes|d
+nom|Mitbewohnerin|___ Mitbewohnerin kocht heute Borschtsch für alle.|Subjekt des Satzes|d
+nom|Krapfen|___ Krapfen ist mit Marmelade gefüllt.|Subjekt des Satzes|
+nom|Computer|___ Computer im Wohnzimmer ist leider kaputt.|Subjekt des Satzes|d
+akk|Kinderarzt|Ich rufe morgen ___ Kinderarzt an.|anrufen + Akkusativ|d
+akk|Installateur|Wir brauchen dringend ___ Installateur.|brauchen + Akkusativ|
+akk|Reparatur|Die Hausverwaltung bezahlt ___ Reparatur.|bezahlen + Akkusativ|d
+akk|Schaden|Ich melde ___ Schaden sofort der Hausverwaltung.|melden + Akkusativ|d
+akk|Hausordnung|Bitte lesen Sie ___ Hausordnung genau.|lesen + Akkusativ|d
+akk|Besichtigung|Wir haben morgen ___ Besichtigung in Favoriten.|haben + Akkusativ|i
+akk|Mietvertrag|Wir unterschreiben morgen ___ Mietvertrag.|unterschreiben + Akkusativ|d
+akk|Kaution|Wir zahlen ___ Kaution von drei Monatsmieten.|zahlen + Akkusativ|i
+akk|Überweisung|Der Hausarzt gibt mir ___ Überweisung zum Facharzt.|geben + Akkusativ|i
+akk|Rezept|Die Ärztin schreibt mir ___ Rezept.|schreiben + Akkusativ|i
+akk|Pflaster|Hast du ___ Pflaster für mich?|haben + Akkusativ|i
+akk|Salbe|Die Apothekerin empfiehlt mir ___ Salbe.|empfehlen + Akkusativ|i
+akk|Blutdruck|Die Ärztin misst ___ Blutdruck.|messen + Akkusativ|d
+akk|Erlagschein|Ich bezahle ___ Erlagschein bei der Bank.|bezahlen + Akkusativ|d
+akk|Brief|Ich schicke ___ Brief per Einschreiben.|schicken + Akkusativ|d
+akk|Briefmarke|Ich brauche noch ___ Briefmarke für den Brief.|brauchen + Akkusativ|i
+akk|Girokonto|Ich eröffne ___ Girokonto bei der Bank.|eröffnen + Akkusativ|i
+akk|Kontoauszug|Ich drucke ___ Kontoauszug aus.|ausdrucken + Akkusativ|d
+akk|Parkschein|Vergiss ___ Parkschein nicht!|vergessen + Akkusativ|d
+akk|Führerschein|Meine Schwester macht gerade ___ Führerschein.|machen + Akkusativ|d
+akk|Helm|Beim Radfahren trage ich immer ___ Helm.|tragen + Akkusativ|i
+akk|Roller|Mein Sohn wünscht sich ___ Roller zum Geburtstag.|sich wünschen + Akkusativ|i
+akk|Christbaum|Wir kaufen ___ Christbaum am Markt.|kaufen + Akkusativ|i
+akk|Adventkranz|Die Kinder basteln ___ Adventkranz.|basteln + Akkusativ|i
+akk|Kostüm|Für den Fasching näht die Oma ___ Kostüm.|nähen + Akkusativ|i
+akk|Kerze|Am Abend zünden wir ___ Kerze an.|anzünden + Akkusativ|i
+akk|Prüfung|Im März mache ich ___ Prüfung auf Niveau B1.|machen + Akkusativ|d
+akk|Kurs|Ich besuche ___ Kurs am Abend.|besuchen + Akkusativ|
+akk|Referat|Meine Tochter hält morgen ___ Referat über Wien.|halten + Akkusativ|i
+akk|Kinderbetreuung|Wir suchen ___ Kinderbetreuung für den Nachmittag.|suchen + Akkusativ|i
+akk|Zuckerl|Das Kind bekommt ___ Zuckerl.|bekommen + Akkusativ|i
+akk|Junge|Ich kenne ___ Jungen aus der Schule.|kennen + Akkusativ|d
+akk|Patient|Die Ärztin untersucht ___ Patienten.|untersuchen + Akkusativ|d
+akk|Bub|Die Mutter ruft ___ Buben zum Essen.|rufen + Akkusativ|d
+akk|Wecker|Ich stelle ___ Wecker auf sechs Uhr.|stellen + Akkusativ|d
+akk|Fernseher|Kannst du bitte ___ Fernseher leiser machen?|machen + Akkusativ|d
+akk|Anruf|Ich warte auf ___ Anruf vom Arzt.|warten auf + Akkusativ|
+akk|Sprachnachricht|Ich schicke dir ___ Sprachnachricht.|schicken + Akkusativ|i
+akk|Bus|Ich nehme jeden Morgen ___ Bus zum Deutschkurs.|nehmen + Akkusativ|d
+akk|Laptop|Für den Deutschkurs brauche ich ___ Laptop.|brauchen + Akkusativ|i
+akk|Aufgabe|Die Lehrerin erklärt ___ Aufgabe noch einmal.|erklären + Akkusativ|d
+akk|Zusage|Nach der Besichtigung bekommen wir ___ Zusage für die Wohnung.|bekommen + Akkusativ|
+akk|Buch|Ich lese gerade ___ Buch über Wien.|lesen + Akkusativ|
+akk|Stuhl|Wir kaufen ___ Stuhl für die Küche.|kaufen + Akkusativ|
+dat|Hausverwaltung|Ich schreibe ___ Hausverwaltung eine E-Mail.|schreiben + Dativ|d
+dat|Installateur|Ich zeige ___ Installateur den Wasserhahn.|zeigen + Dativ|d
+dat|Hausarzt|Ich gehe morgen zu ___ Hausarzt.|zu + Dativ|d
+dat|Facharzt|Ich habe einen Termin bei ___ Facharzt.|bei + Dativ|d
+dat|Patient|Die Ärztin spricht mit ___ Patienten.|mit + Dativ|d
+dat|Nachbar|Ich helfe ___ Nachbarn beim Tragen.|helfen + Dativ|d
+dat|Kunde|Die Verkäuferin hilft ___ Kunden an der Kassa.|helfen + Dativ|d
+dat|Student|Das Buch gehört ___ Studenten aus Kyjiw.|gehören + Dativ|
+dat|Junge|Die Oma gibt ___ Jungen ein Zuckerl.|geben + Dativ|d
+dat|Kellner|Wir geben ___ Kellner ein Trinkgeld.|geben + Dativ|d
+dat|Verkäuferin|Ich zeige ___ Verkäuferin die Quittung.|zeigen + Dativ|d
+dat|Briefträger|Ich danke ___ Briefträger für das Paket.|danken + Dativ|d
+dat|Bank|Ich hebe Geld bei ___ Bank ab.|bei + Dativ|d
+dat|Lehrer|Die Kinder danken ___ Lehrer für den Ausflug.|danken + Dativ|d
+dat|Kindergarten|Ich hole meine Tochter von ___ Kindergarten ab.|von + Dativ|d
+dat|Schule|Nach ___ Schule spielen die Kinder im Hof.|nach + Dativ|d
+dat|Elternabend|Nach ___ Elternabend trinken wir noch einen Kaffee.|nach + Dativ|d
+dat|Kurs|Seit ___ Kurs spreche ich viel besser Deutsch.|seit + Dativ|d
+dat|Prüfung|Vor ___ Prüfung bin ich sehr nervös.|vor (Zeit) + Dativ|d
+dat|Mitbewohner|Ich teile die Wohnung mit ___ Mitbewohner aus Graz.|mit + Dativ|i
+dat|Oma|Am Sonntag fahren wir zu ___ Oma.|zu + Dativ|d
+dat|Opa|Die Kinder helfen ___ Opa im Garten.|helfen + Dativ|d
+dat|Fahrgast|Der Busfahrer antwortet ___ Fahrgast freundlich.|antworten + Dativ|d
+dat|Werkstatt|Ich hole das Auto von ___ Werkstatt ab.|von + Dativ|d
+dat|Unfall|Nach ___ Unfall fährt sie sehr vorsichtig.|nach + Dativ|d
+dat|Fest|Zu ___ Fest kommen alle Nachbarn.|zu + Dativ|d
+dat|Nikolaus|Die Kinder singen ___ Nikolaus ein Lied vor.|vorsingen + Dativ|d
+dat|Tierarzt|Morgen gehe ich mit der Katze zu ___ Tierarzt.|zu + Dativ|d
+dat|Spaziergang|Nach ___ Spaziergang sind wir hungrig.|nach + Dativ|d
+dat|Frühstück|Nach ___ Frühstück lese ich die Zeitung.|nach + Dativ|d
+dat|Abendessen|Nach ___ Abendessen spielen wir ein Brettspiel.|nach + Dativ|d
+dat|Fahrschule|Ich melde mich bei ___ Fahrschule an.|bei + Dativ|d
+dat|Bus|Ich komme jeden Tag mit ___ Bus zum Kurs.|mit + Dativ|d
+dat|Bibliothek|Am Samstag gehe ich zu ___ Bibliothek.|zu + Dativ|d
+gen|Mitbewohnerin|Das Zimmer ___ Mitbewohnerin ist sehr hell.|Wessen Zimmer? → Genitiv|d
+gen|Oma|Das Rezept ___ Oma ist das beste.|Wessen Rezept? → Genitiv|d
+gen|Vermieter|Die Telefonnummer ___ Vermieters steht im Mietvertrag.|Wessen Telefonnummer? → Genitiv|d
+gen|Hausverwaltung|Die Adresse ___ Hausverwaltung hängt im Treppenhaus.|Wessen Adresse? → Genitiv|d
+gen|Kühlschrank|Die Tür ___ Kühlschranks schließt nicht richtig.|Genitiv: die Tür des Kühlschranks|d
+gen|Heizung|Wegen ___ Heizung rufe ich den Installateur an.|wegen + Genitiv|d
+gen|Lärm|Wegen ___ Lärms kann ich nicht schlafen.|wegen + Genitiv|d
+gen|Baustelle|Wegen ___ Baustelle fährt der Bus heute anders.|wegen + Genitiv|d
+gen|Umzug|Während ___ Umzugs helfen uns die Nachbarn.|während + Genitiv|d
+gen|Woche|Am Anfang ___ Woche habe ich viele Termine.|am Anfang + Genitiv|d
+gen|Monat|Am Ende ___ Monats zahle ich die Miete.|am Ende + Genitiv|d
+gen|Jahr|Bis zum Ende ___ Jahres möchte ich die B1-Prüfung schaffen.|Genitiv: das Ende des Jahres|d
+gen|Urlaub|Während ___ Urlaubs schlafe ich jeden Tag lange.|während + Genitiv|d
+gen|Verspätung|Wegen ___ Verspätung komme ich zu spät zum Kurs.|wegen + Genitiv|d
+gen|Lehrer|Die Erklärungen ___ Lehrers sind sehr klar.|Wessen Erklärungen? → Genitiv|d
+gen|Kindergarten|Die Leiterin ___ Kindergartens heißt Frau Huber.|Wessen Leiterin? → Genitiv|d
+gen|Junge|Die Mutter ___ Jungen wartet vor der Schule.|Wessen Mutter? → Genitiv|d
+gen|Patient|Der Arzt liest die Daten ___ Patienten.|Wessen Daten? → Genitiv|d
+gen|Hausarzt|Die Telefonnummer ___ Hausarztes habe ich im Handy.|Wessen Telefonnummer? → Genitiv|d
+gen|Operation|Während ___ Operation schläft der Patient.|während + Genitiv|d
+gen|Schwangerschaft|Während ___ Schwangerschaft geht sie regelmäßig zur Ärztin.|während + Genitiv|d
+gen|Erkältung|Wegen ___ Erkältung bleibe ich heute im Bett.|wegen + Genitiv|
+gen|Fieber|Wegen ___ Fiebers bleibt mein Sohn heute zu Hause.|wegen + Genitiv|d
+gen|Panne|Wegen ___ Panne kommen wir zu spät.|wegen + Genitiv|i
+gen|Innenstadt|Innerhalb ___ Innenstadt fahre ich nur mit dem Rad.|innerhalb + Genitiv|d
+gen|Bezirk|Die Bewohner ___ Bezirks feiern ein Straßenfest.|Wessen Bewohner? → Genitiv|d
+gen|Gebäude|Der Eingang ___ Gebäudes ist um die Ecke.|Genitiv: der Eingang des Gebäudes|d
+gen|Fest|Am Ende ___ Festes gibt es ein Feuerwerk.|am Ende + Genitiv|d
+gen|Advent|Während ___ Advents backen wir viele Kekse.|während + Genitiv|d
+gen|Christkindlmarkt|Der Duft ___ Christkindlmarkts ist herrlich.|Genitiv: der Duft des Christkindlmarkts|d
+gen|Feiertag|Wegen ___ Feiertags sind alle Geschäfte geschlossen.|wegen + Genitiv|d
+gen|Hochzeit|Die Fotos ___ Hochzeit sind wunderschön.|Wessen Fotos? → Genitiv|d
+gen|Ball|Die Musik ___ Balls ist live.|Genitiv: die Musik des Balls|d
+gen|Paket|Statt ___ Pakets finde ich nur einen Zettel im Briefkasten.|statt + Genitiv|d
+gen|Brief|Der Absender ___ Briefs ist das Finanzamt.|Wessen Absender? → Genitiv|d
+gen|Konto|Die Nummer ___ Kontos steht auf der Karte.|Genitiv: die Nummer des Kontos|d
+gen|Formular|Die zweite Seite ___ Formulars ist für die Unterschrift.|Genitiv: die Seite des Formulars|d
+gen|Meldebestätigung|Die Kopie ___ Meldebestätigung brauche ich für die Bank.|Genitiv: die Kopie der Meldebestätigung|d
+gen|Ausweis|Statt ___ Ausweises können Sie auch den Reisepass zeigen.|statt + Genitiv|d
+gen|Reisepass|Die Gültigkeit ___ Reisepasses endet im Mai.|Genitiv: die Gültigkeit des Reisepasses|d
+gen|Garten|In der Mitte ___ Gartens steht ein alter Baum.|Genitiv: die Mitte des Gartens|d
+gen|Sommer|Während ___ Sommers fahren wir oft an den See.|während + Genitiv|d
+gen|Unwetter|Wegen ___ Unwetters bleibt der Spielplatz geschlossen.|wegen + Genitiv|d
+gen|Gewitter|Während ___ Gewitters bleiben wir im Haus.|während + Genitiv|d
+gen|Bus|Die Fahrt ___ Busses dauert zwanzig Minuten.|Genitiv: die Fahrt des Busses|d
+gen|Abend|Im Laufe ___ Abends kommen noch zwei Freunde.|im Laufe + Genitiv|d
+wod|Wartezimmer|Wir warten schon eine Stunde in ___ Wartezimmer.|in + Wo? = Dativ|d
+woa|Wartezimmer|Bitte gehen Sie in ___ Wartezimmer.|in + Wohin? = Akkusativ|d
+wod|Briefkasten|Der Brief liegt schon in ___ Briefkasten.|in + Wo? = Dativ|d
+woa|Briefkasten|Ich werfe den Brief in ___ Briefkasten.|in + Wohin? = Akkusativ|d
+wod|Werkstatt|Das Auto ist seit Montag in ___ Werkstatt.|in + Wo? = Dativ|d
+woa|Werkstatt|Ich bringe das Auto in ___ Werkstatt.|in + Wohin? = Akkusativ|d
+wod|Schalter|Bitte warten Sie vor ___ Schalter.|vor + Wo? = Dativ|d
+wod|Spielplatz|Die Kinder spielen auf ___ Spielplatz.|auf + Wo? = Dativ|d
+woa|Spielplatz|Nach dem Essen gehen wir auf ___ Spielplatz.|auf + Wohin? = Akkusativ|d
+wod|Dachboden|Die alten Bücher liegen auf ___ Dachboden.|auf + Wo? = Dativ|d
+woa|Dachboden|Wir tragen die Kisten auf ___ Dachboden.|auf + Wohin? = Akkusativ|d
+wod|Hof|Die Fahrräder stehen in ___ Hof.|in + Wo? = Dativ|d
+woa|Hof|Die Kinder laufen in ___ Hof.|in + Wohin? = Akkusativ|d
+wod|Christkindlmarkt|Wir trinken Punsch auf ___ Christkindlmarkt.|auf + Wo? = Dativ|d
+woa|Christkindlmarkt|Am Samstag gehen wir auf ___ Christkindlmarkt.|auf + Wohin? = Akkusativ|d
+wod|Spüle|Das schmutzige Geschirr steht in ___ Spüle.|in + Wo? = Dativ|d
+wod|Spülmaschine|Die Teller sind noch in ___ Spülmaschine.|in + Wo? = Dativ|d
+woa|Spülmaschine|Ich stelle die Teller in ___ Spülmaschine.|in + Wohin? = Akkusativ|d
+wod|Kindergarten|Mein Sohn ist bis vier Uhr in ___ Kindergarten.|in + Wo? = Dativ|d
+wod|Schule|Meine Tochter ist noch in ___ Schule.|in + Wo? = Dativ|d
+woa|Schule|Die Kinder gehen um acht Uhr in ___ Schule.|in + Wohin? = Akkusativ|d
+wod|Apotheke|Die Salbe bekommst du in ___ Apotheke.|in + Wo? = Dativ|d
+woa|Apotheke|Ich gehe schnell in ___ Apotheke.|in + Wohin? = Akkusativ|d
+wod|Wohnzimmer|Der Christbaum steht in ___ Wohnzimmer.|in + Wo? = Dativ|d
+woa|Wohnzimmer|Wir stellen den Christbaum in ___ Wohnzimmer.|in + Wohin? = Akkusativ|d
+woa|Fundbüro|Ich bringe die Tasche in ___ Fundbüro.|in + Wohin? = Akkusativ|d
+wod|Hallenbad|Im Winter schwimmen wir in ___ Hallenbad.|in + Wo? = Dativ|d
+woa|Freibad|Im Sommer gehen wir oft in ___ Freibad.|in + Wohin? = Akkusativ|d
+wod|Krankenhaus|Mein Opa liegt seit gestern in ___ Krankenhaus.|in + Wo? = Dativ|d
+woa|Krankenhaus|Die Rettung bringt ihn in ___ Krankenhaus.|in + Wohin? = Akkusativ|d
+woa|Park|Nach dem Essen gehe ich in ___ Park.|in + Wohin? = Akkusativ|d
+woa|Fitnessstudio|Am Abend gehe ich in ___ Fitnessstudio.|in + Wohin? = Akkusativ|d
 `;
 const SENT=[];
 SRAW.split('\n').forEach(l=>{
@@ -1665,28 +1888,28 @@ const CN={nom:'Nominativ',akk:'Akkusativ',dat:'Dativ',gen:'Genitiv'};
 const CQ={nom:'Wer? Was?',akk:'Wen? Was?',dat:'Wem?',gen:'Wessen?'};
 // Signalwörter: Wort | Fall | Art | Beispiel
 const SIG=[
-  ['für','akk','Präposition','Das Geschenk ist für den Chef.'],
+  ['für','akk','Präposition','Das Geschenk ist für den Opa.'],
   ['durch','akk','Präposition','Wir gehen durch den Park.'],
-  ['ohne','akk','Präposition','Ohne den Laptop kann ich nicht arbeiten.'],
+  ['ohne','akk','Präposition','Ohne den Schlüssel komme ich nicht in die Wohnung.'],
   ['gegen','akk','Präposition','Das Auto fährt gegen den Baum.'],
   ['um','akk','Präposition','Die Kinder laufen um den Tisch herum.'],
-  ['aus','dat','Präposition','Ich komme gerade aus dem Büro.'],
-  ['bei','dat','Präposition','Ich arbeite bei einer Bank.'],
-  ['mit','dat','Präposition','Ich fahre mit dem Bus zur Arbeit.'],
-  ['nach','dat','Präposition','Nach dem Meeting trinken wir Kaffee.'],
+  ['aus','dat','Präposition','Ich komme gerade aus der Apotheke.'],
+  ['bei','dat','Präposition','Ich wohne bei meiner Tante.'],
+  ['mit','dat','Präposition','Ich fahre mit dem Bus zum Kurs.'],
+  ['nach','dat','Präposition','Nach dem Kurs trinken wir Kaffee.'],
   ['seit','dat','Präposition','Seit einem Jahr wohne ich in Wien.'],
-  ['von','dat','Präposition','Das ist ein Brief von der Chefin.'],
+  ['von','dat','Präposition','Das ist ein Brief von der Hausverwaltung.'],
   ['zu','dat','Präposition','Ich gehe zum Arzt (zu + dem).'],
   ['gegenüber','dat','Präposition','Gegenüber dem Bahnhof ist eine Apotheke.'],
-  ['ab','dat','Präposition','Ab dem ersten Mai arbeite ich Vollzeit.'],
-  ['außer','dat','Präposition','Außer dem Chef sind alle im Homeoffice.'],
+  ['ab','dat','Präposition','Ab dem ersten Mai wohnen wir in Graz.'],
+  ['außer','dat','Präposition','Außer meinem Bruder kommen alle zur Hochzeit.'],
   ['wegen','gen','Präposition','Wegen des Regens bleiben wir zu Hause.'],
-  ['während','gen','Präposition','Während des Meetings ist das Handy aus.'],
+  ['während','gen','Präposition','Während des Unterrichts ist das Handy aus.'],
   ['trotz','gen','Präposition','Trotz des Staus komme ich pünktlich.'],
   ['statt','gen','Präposition','Statt des Autos nehme ich das Fahrrad.'],
   ['innerhalb','gen','Präposition','Innerhalb einer Woche bekommen Sie eine Antwort.'],
-  ['außerhalb','gen','Präposition','Außerhalb der Arbeitszeit lese ich keine E-Mails.'],
-  ['aufgrund','gen','Präposition','Aufgrund der Verspätung fällt das Meeting aus.'],
+  ['außerhalb','gen','Präposition','Außerhalb der Öffnungszeiten ist das Amt geschlossen.'],
+  ['aufgrund','gen','Präposition','Aufgrund der Verspätung verpassen wir den Anschluss.'],
   ['in (Wo?)','dat','Wechselpräposition','Die Kinder sind in der Schule.'],
   ['in (Wohin?)','akk','Wechselpräposition','Die Kinder gehen in die Schule.'],
   ['auf (Wo?)','dat','Wechselpräposition','Das Buch liegt auf dem Tisch.'],
@@ -1699,20 +1922,23 @@ const SIG=[
   ['zwischen (Wo?)','dat','Wechselpräposition','Die Apotheke ist zwischen der Bank und dem Supermarkt.'],
   ['über (Wohin?)','akk','Wechselpräposition','Ich hänge die Lampe über den Tisch.'],
   ['hinter (Wo?)','dat','Wechselpräposition','Der Garten ist hinter dem Haus.'],
-  ['helfen','dat','Verb','Ich helfe der Kollegin.'],
-  ['danken','dat','Verb','Wir danken dem Team.'],
-  ['gefallen','dat','Verb','Das Angebot gefällt dem Kunden.'],
+  ['helfen','dat','Verb','Ich helfe der Nachbarin.'],
+  ['danken','dat','Verb','Wir danken dem Arzt.'],
+  ['gefallen','dat','Verb','Die Wohnung gefällt meiner Mutter.'],
   ['gehören','dat','Verb','Das Fahrrad gehört dem Nachbarn.'],
-  ['antworten','dat','Verb','Ich antworte der Chefin sofort.'],
-  ['gratulieren','dat','Verb','Wir gratulieren dem Kollegen zum Geburtstag.'],
-  ['zuhören','dat','Verb','Der Scrum Master hört dem Team zu.'],
+  ['antworten','dat','Verb','Ich antworte der Lehrerin sofort.'],
+  ['gratulieren','dat','Verb','Wir gratulieren dem Opa zum Geburtstag.'],
+  ['zuhören','dat','Verb','Die Kinder hören der Lehrerin zu.'],
   ['schmecken','dat','Verb','Die Suppe schmeckt dem Kind.'],
+  ['vertrauen','dat','Verb','Ich vertraue meiner Freundin.'],
+  ['passen','dat','Verb','Die Jacke passt dem Kind nicht mehr.'],
+  ['fehlen','dat','Verb','Die Familie fehlt mir sehr.'],
   ['brauchen','akk','Verb','Ich brauche einen Termin.'],
-  ['besuchen','akk','Verb','Wir besuchen den Kunden in Graz.'],
-  ['anrufen','akk','Verb','Ich rufe den Kollegen an.'],
+  ['besuchen','akk','Verb','Wir besuchen den Onkel in Graz.'],
+  ['anrufen','akk','Verb','Ich rufe den Installateur an.'],
   ['fragen','akk','Verb','Ich frage die Lehrerin.'],
-  ['kennen','akk','Verb','Kennst du den Product Owner?'],
-  ['bekommen','akk','Verb','Sie bekommt einen Vertrag.'],
+  ['kennen','akk','Verb','Kennst du den neuen Nachbarn?'],
+  ['bekommen','akk','Verb','Sie bekommt einen Brief vom Amt.'],
   ['einladen','akk','Verb','Ich lade die Nachbarin zum Kaffee ein.'],
   ['bestellen','akk','Verb','Ich bestelle einen Kaffee.']
 ];
@@ -1733,10 +1959,12 @@ const IC={
   fortschritt:'<path d="M5 20v-8M12 20V5M19 20v-11"/>',
   speaker:'<path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 9a4 4 0 010 6"/>',
   flag:'<path d="M6 21V4"/><path d="M6 5h11l-2 4 2 4H6"/>',
-  close:'<path d="M6 6l12 12M18 6L6 18"/>'
+  close:'<path d="M6 6l12 12M18 6L6 18"/>',
+  wdh:'<path d="M20 11a8 8 0 00-14.3-4.9L4 8"/><path d="M4 4v4h4"/><path d="M4 13a8 8 0 0014.3 4.9L20 16"/><path d="M20 20v-4h-4"/>'
 };
 const HEART='<svg class="heart" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><defs><linearGradient id="uaheart" x1="0" x2="0" y1="0" y2="1"><stop offset=".55" stop-color="#0057B7"/><stop offset=".55" stop-color="#FFD500"/></linearGradient></defs><path fill="url(#uaheart)" d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.4.7-1.3 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>';
-const TABS=[['ueben','Üben'],['faelle','Fälle'],['woerter','Wörter'],['regeln','Regeln'],['fortschritt','Fortschritt']];
+const TABS=[['ueben','Üben'],['faelle','Fälle'],['wdh','Wiederholen'],['woerter','Wörter'],['fortschritt','Fortschritt']];
+const GROUPS=[['haus','Zuhause','Zuhause'],['draussen','Unterwegs','Unterwegs'],['land','Ämter & Co','Ämter']];
 const LAND={at:'Österreich',de:'Deutschland'};
 const flag=k=>'<span class="flag flag-'+k+'" role="img" aria-label="'+LAND[k]+'" title="'+LAND[k]+'"></span>';
 function badges(e,long){
@@ -1759,10 +1987,32 @@ function pairTip(e){
 
 /* ---------- Speicher ---------- */
 const KEY='derdiedas.v1';
-const defaults=()=>({w:{},en:true,uk:true,days:[],flags:{},cs:{},pr:[0,0]});
+const defaults=()=>({w:{},s:{},g:{},en:true,uk:true,days:[],flags:{},cs:{},pr:[0,0]});
 let S=defaults();
 try{const raw=localStorage.getItem(KEY);if(raw)S=Object.assign(defaults(),JSON.parse(raw));}catch(e){}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+
+/* ---------- Wiederholen: feste Abstände in Tagen (Leitner-System) ---------- */
+const INT=[0,1,3,7,14,30];
+function today(){const d=new Date();return Math.floor((d.getTime()-d.getTimezoneOffset()*60000)/864e5);}
+function srec(kind,key){const m=S[kind];return m[key]||(m[key]={b:0,r:0,w:0});}
+// richtig: nächste Stufe, kommt nach INT[b] Tagen wieder (nur wenn fällig, sonst kein Sprung)
+// falsch: zwei Stufen zurück und heute noch einmal fällig
+function grade(s,ok){
+  const t=today();
+  if(ok){s.r++;if(s.d===undefined||s.d<=t){s.b=Math.min(5,s.b+1);s.d=t+INT[s.b];}}
+  else{s.w++;s.b=Math.max(0,s.b-2);s.d=t;}
+  s.l=t;
+}
+// Fortschritt aus Version 1.2 übernehmen: Fälligkeiten verteilen, damit nicht alles an einem Tag kommt
+(function(){
+  const t=today();
+  ['w','s','g'].forEach(k=>{
+    if(!S[k]||typeof S[k]!=='object')S[k]={};
+    Object.keys(S[k]).forEach(id=>{const s=S[k][id];
+      if(s.d===undefined){s.b=Math.min(5,s.b||0);s.r=s.r||0;s.w=s.w||0;s.d=t+(s.b?1+Math.floor(Math.random()*INT[s.b]):0);s.l=t-1;}});
+  });
+})();
 const fmt=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 function markDay(){const t=fmt(new Date());if(S.days[S.days.length-1]!==t){S.days.push(t);if(S.days.length>120)S.days.shift();}}
 function dayStreak(){
@@ -1796,11 +2046,12 @@ let cfg={grp:'all',cat:'all',lvl:'b2'};
 let Q=null,P=null;
 let C={mode:'akk',indef:false,q:null,ans:null,right:0,total:0,streak:0,bag:{},last:null};
 let G={q:null,ans:null,bag:[],right:0,total:0};
-let W={q:'',grp:'all',tag:'',copy:''};
+let W={q:'',grp:'all',tag:'',copy:'',view:'list',lim:150};
+let R=null,RV={f:'all'};
 let resetAsk=false;
 
 function pool(){return WORDS.filter(e=>(cfg.grp==='all'||e.grp===cfg.grp)&&(cfg.cat==='all'||e.cat===cfg.cat)&&(cfg.lvl==='b2'||!e.b2));}
-function weight(e){const s=S.w[e.id];if(!s)return 5;return [6,4,2.5,1.2,.5][s.b];}
+function weight(e){const s=S.w[e.id];if(!s)return 5;return [6,4,2.5,1.2,.5,.3][s.b]||.3;}
 function pickWords(p,n){
   const a=p.slice(),out=[];
   while(out.length<n&&a.length){
@@ -1816,7 +2067,7 @@ function pickWords(p,n){
 /* ---------- Üben (Artikel) ---------- */
 function startRound(){
   const picks=pickWords(pool(),10);
-  if(!picks.length)return;
+  if(!picks.length){toast('Keine Wörter in dieser Auswahl');return;}
   P=null;
   Q={queue:picks,pos:0,answered:false,chosen:null,ok:false,streak:0,firstOk:0,n:picks.length,wrongs:[],seen:{},requeued:{},done:false};
   render(true);
@@ -1825,11 +2076,11 @@ function answer(a){
   if(!Q||Q.answered||Q.done)return;
   const e=Q.queue[Q.pos];const ok=a===e.art;
   Q.answered=true;Q.chosen=a;Q.ok=ok;
-  const s=S.w[e.id]||(S.w[e.id]={b:0,r:0,w:0});
+  grade(srec('w',e.id),ok);
   const first=!Q.seen[e.id];Q.seen[e.id]=1;
-  if(ok){s.r++;s.b=Math.min(4,s.b+1);Q.streak++;if(first)Q.firstOk++;}
+  if(ok){Q.streak++;if(first)Q.firstOk++;}
   else{
-    s.w++;s.b=Math.max(0,s.b-2);Q.streak=0;
+    Q.streak=0;
     if(Q.wrongs.indexOf(e)<0)Q.wrongs.push(e);
     if(!Q.requeued[e.id]){Q.requeued[e.id]=1;Q.queue.splice(Math.min(Q.queue.length,Q.pos+4),0,e);}
   }
@@ -1847,18 +2098,19 @@ function viewPractice(){
   if(P)return viewPairs();
   if(Q&&Q.done)return viewResult();
   if(Q)return viewQuestion();
-  const st=stats();const p=pool();
+  const st=stats();const p=pool();const nd=dueList('all').length;
   const opts='<option value="all">Alle Themen</option>'+Object.keys(CATS)
     .filter(k=>cfg.grp==='all'||CATS[k][1]===cfg.grp)
     .map(k=>'<option value="'+k+'"'+(cfg.cat===k?' selected':'')+'>'+esc(CATS[k][0])+'</option>').join('');
   const g=(v,l)=>'<button class="'+(cfg.grp===v?'on':'')+'" data-a="grp" data-v="'+v+'">'+l+'</button>';
   const lv=(v,l)=>'<button class="'+(cfg.lvl===v?'on':'')+'" data-a="lvl" data-v="'+v+'">'+l+'</button>';
   return '<section class="hero"><h1><span class="c-der">der</span><span class="c-die">die</span><span class="c-das">das</span></h1>'+
-    '<i class="ua-line" aria-hidden="true"></i><p>Artikel und Fälle für Alltag und Beruf</p></section>'+
+    '<i class="ua-line" aria-hidden="true"></i><p>Artikel und Fälle für Alltag und B1-Prüfung</p></section>'+
     '<div class="stats"><div class="stat"><b>'+dayStreak()+'</b><span>Tage in Folge</span></div>'+
     '<div class="stat"><b>'+st.seen+'</b><span>von '+WORDS.length+' geübt</span></div>'+
     '<div class="stat"><b>'+st.acc+'%</b><span>richtig</span></div></div>'+
-    '<div class="card"><div class="lbl">Wörter</div><div class="seg">'+g('all','Alle')+g('alltag','Alltag')+g('job','Beruf')+'</div>'+
+    (nd?'<div class="card cta"><div><b>'+nd+'</b><span>heute fällig</span></div><button class="btn small-btn" data-a="rgo">Wiederholen</button></div>':'')+
+    '<div class="card"><div class="lbl">Wörter</div><div class="seg seg4">'+g('all','Alle')+GROUPS.map(x=>g(x[0],x[2])).join('')+'</div>'+
     '<div class="lbl">Thema</div><select id="cat" aria-label="Thema">'+opts+'</select>'+
     '<div class="lbl">Niveau</div><div class="seg">'+lv('b1','A2 – B1')+lv('b2','mit B2-Wörtern')+'</div>'+
     '<div class="lbl">Übersetzung anzeigen</div><div class="chips">'+
@@ -1872,29 +2124,32 @@ function viewPractice(){
     '<p class="small" style="margin-top:18px">Version '+VERSION+' · '+BUILD+'</p><p class="small" style="margin-top:4px">Made with love for Anna'+HEART+'</p>';
 }
 function nounSize(w){const n=w.length;return n>=23?21:n>=19?25:n>=17?27:n>=15?31:n>=13?35:n>=11?39:44;}
-function viewQuestion(){
-  const e=Q.queue[Q.pos];const done=Q.answered;
-  const pr=Math.round(Q.pos/Q.queue.length*100);
-  const bd=badges(e,true);
-  let h='<div class="qtop"><button class="icon" data-a="quit" aria-label="Beenden">'+ic(IC.close)+'</button>'+
-    '<div class="bar"><i style="width:'+pr+'%"></i></div><div class="pill">Serie '+Q.streak+'</div></div>';
-  h+='<div class="card qcard">'+(bd?'<div class="badges">'+bd+'</div>':'')+
+function wordCard(e,chosen,ok,act,lead){
+  const done=chosen!==null,bd=badges(e,true);
+  let h='<div class="card qcard">'+((bd||lead)?'<div class="badges">'+(lead||'')+bd+'</div>':'')+
     '<div class="noun'+(done?' c-'+e.art:'')+'" style="font-size:'+nounSize(e.w)+'px">'+(done?'<span class="art">'+e.art+'</span> ':'')+esc(e.w)+'</div>'+
     '<div class="tr">'+trans(e)+'</div>';
   if(done){
     const tip=hintFor(e);
-    h+='<div class="fb '+(Q.ok?'ok':'no')+'"><div class="row1"><span>'+(Q.ok?'Richtig!':'Nicht ganz. Es heißt: <span class="c-'+e.art+'">'+e.art+' '+esc(e.w)+'</span>')+'</span>'+
+    h+='<div class="fb '+(ok?'ok':'no')+'"><div class="row1"><span>'+(ok?'Richtig!':'Nicht ganz. Es heißt: <span class="c-'+e.art+'">'+e.art+' '+esc(e.w)+'</span>')+'</span>'+
       (canSpeak?'<button class="icon" data-a="say" data-v="'+e.i+'" aria-label="Vorlesen">'+ic(IC.speaker)+'</button>':'')+'</div>'+
       (tip?'<div class="tip">'+tip+'</div>':'')+pairTip(e)+'</div>';
   }
   h+='</div><div class="arts">';
   ['der','die','das'].forEach(a=>{
     let st='';
-    if(done)st=a===e.art?' right':(a===Q.chosen?' wrong':' dim');
-    h+='<button class="art-btn '+a+st+'" data-a="ans" data-v="'+a+'"'+(done?' disabled':'')+'>'+a+'</button>';
+    if(done)st=a===e.art?' right':(a===chosen?' wrong':' dim');
+    h+='<button class="art-btn '+a+st+'" data-a="'+act+'" data-v="'+a+'"'+(done?' disabled':'')+'>'+a+'</button>';
   });
-  h+='</div>';
-  if(done)h+='<button class="btn" data-a="next">Weiter</button>';
+  return h+'</div>';
+}
+function viewQuestion(){
+  const e=Q.queue[Q.pos];
+  const pr=Math.round(Q.pos/Q.queue.length*100);
+  let h='<div class="qtop"><button class="icon" data-a="quit" aria-label="Beenden">'+ic(IC.close)+'</button>'+
+    '<div class="bar"><i style="width:'+pr+'%"></i></div><div class="pill">Serie '+Q.streak+'</div></div>';
+  h+=wordCard(e,Q.answered?Q.chosen:null,Q.ok,'ans','');
+  if(Q.answered)h+='<button class="btn" data-a="next">Weiter</button>';
   return h;
 }
 function viewResult(){
@@ -1999,6 +2254,7 @@ function caseAnswer(v){
   const g=(q.s.c==='wod'||q.s.c==='woa')?'wo':q.s.c;
   const st=S.cs[g]||(S.cs[g]=[0,0]);
   st[1]++;
+  grade(srec('s',skey(q.s,C.indef?'i':'d')),ok);
   if(ok){C.right++;C.streak++;st[0]++;}
   else{C.streak=0;const bag=C.bag[q.key];if(bag)bag.splice(Math.min(bag.length,8+rand(5)),0,q.s);}
   markDay();save();render();
@@ -2020,8 +2276,8 @@ function nounTip(q){
   return 'Achtung: hier heißt es <b>'+esc(form)+'</b>.';
 }
 // Zusammenziehung (zu + dem = zum) nur bei der/die/das
-function contraction(q){
-  if(C.indef)return null;
+function contraction(q,indef){
+  if(indef)return null;
   const pre=q.s.t.split('___')[0];
   const m=pre.match(/(^|\s)(in|an|zu|von|bei|In|An|Zu|Von|Bei) $/);
   if(!m)return null;
@@ -2029,34 +2285,31 @@ function contraction(q){
   if(!c)return null;
   return {prep:m[2],start:pre.length-m[2].length-1,word:m[2]===p?c:cap(c),rule:p+' + '+q.form+' = '+c};
 }
-function viewCases(){
-  const m=(v,l)=>'<button class="chip '+(C.mode===v?'on':'')+'" data-a="cmode" data-v="'+v+'">'+l+'</button>';
-  let h='<h2 class="h2">Fälle üben</h2><div class="chips">'+m('nom','Nominativ')+m('akk','Akkusativ')+m('dat','Dativ')+m('gen','Genitiv')+m('wo','Wo? / Wohin?')+m('mix','Mix')+m('sig','Signalwörter')+'</div>';
-  if(C.mode==='sig')return h+viewSig();
-  if(!C.q)newCase();
-  const q=C.q,sn=q.s;
-  const isWo=sn.c==='wod'||sn.c==='woa';
-  h+='<div class="chips" style="margin-top:10px"><button class="chip '+(!C.indef?'on':'')+'" data-a="cdef" data-v="d">der / die / das</button>'+
-    '<button class="chip '+(C.indef?'on':'')+'" data-a="cdef" data-v="i">ein / eine</button></div>';
-  let tag;
-  if(C.ans)tag=CN[q.cs]+' ('+(isWo?(sn.c==='wod'?'Wo?':'Wohin?'):CQ[q.cs])+')';
-  else if(C.mode==='mix')tag='Welcher Fall?';
-  else if(C.mode==='wo')tag='Wo? oder Wohin?';
-  else tag=CN[q.cs]+' ('+CQ[q.cs]+')';
+function caseQ(sn,mode){const cs=CSKEY[sn.c];return {s:sn,e:sn.e,cs:cs,form:ART[mode][cs][sn.e.art]};}
+function skey(sn,mode){return sn.t+'#'+mode;}
+// fertiger Satz mit der richtigen Form (auch zum, im, beim ...)
+function fillSent(sn,mode){
+  const q=caseQ(sn,mode),parts=sn.t.split('___'),ct=contraction(q,mode==='i');
+  if(ct)return parts[0].slice(0,ct.start)+ct.word+parts[1];
+  return parts[0]+(parts[0]===''?cap(q.form):q.form)+parts[1];
+}
+function caseCard(q,indef,ans,tag,act){
+  const sn=q.s,isWo=sn.c==='wod'||sn.c==='woa';
+  if(ans)tag=CN[q.cs]+' ('+(isWo?(sn.c==='wod'?'Wo?':'Wohin?'):CQ[q.cs])+')';
   const parts=sn.t.split('___');
-  const ct=C.ans?contraction(q):null;
+  const ct=ans?contraction(q,indef):null;
   let sent;
   if(ct){
     sent=esc(parts[0].slice(0,ct.start))+'<span class="blank filled c-'+q.e.art+'">'+esc(ct.word)+'</span>'+esc(parts[1]);
   }else{
-    const blank=C.ans?'<span class="blank filled c-'+q.e.art+'">'+esc(parts[0]===''?cap(q.form):q.form)+'</span>':'<span class="blank">&nbsp;</span>';
+    const blank=ans?'<span class="blank filled c-'+q.e.art+'">'+esc(parts[0]===''?cap(q.form):q.form)+'</span>':'<span class="blank">&nbsp;</span>';
     sent=esc(parts[0])+blank+esc(parts[1]);
   }
-  h+='<div class="card qcard" style="margin-top:14px;text-align:left"><div class="tag">'+esc(tag)+'</div>'+
+  let h='<div class="card qcard" style="text-align:left"><div class="tag">'+esc(tag)+'</div>'+
     '<div class="sentence">'+sent+'</div>'+
     '<div class="tr" style="text-align:left">'+trans(q.e)+'</div>';
-  if(C.ans){
-    const ok=C.ans===q.form,nt=nounTip(q);
+  if(ans){
+    const ok=ans===q.form,nt=nounTip(q);
     h+='<div class="fb '+(ok?'ok':'no')+'"><div class="row1"><span>'+(ok?'Richtig!':'Nicht ganz. Richtig ist: <b>'+esc(q.form)+'</b>')+'</span></div>'+
       '<div class="tip"><b>'+esc(sn.h)+'</b></div>'+
       '<div class="tip">'+ruleText(q.cs,q.e.art)+'</div>'+
@@ -2065,12 +2318,23 @@ function viewCases(){
       (q.cs==='gen'&&/^wegen/i.test(sn.h)?'<div class="tip">Im Alltag (besonders in Österreich) hört man oft <i>wegen + Dativ</i>. Schriftlich ist der Genitiv richtig.</div>':'')+'</div>';
   }
   h+='</div><div class="opts">';
-  OPTS[C.indef?'i':'d'].forEach(o=>{
+  OPTS[indef?'i':'d'].forEach(o=>{
     let st='';
-    if(C.ans)st=o===q.form?' right':(o===C.ans?' wrong':' dim');
-    h+='<button class="opt'+st+'" data-a="cans" data-v="'+o+'"'+(C.ans?' disabled':'')+'>'+o+'</button>';
+    if(ans)st=o===q.form?' right':(o===ans?' wrong':' dim');
+    h+='<button class="opt'+st+'" data-a="'+act+'" data-v="'+o+'"'+(ans?' disabled':'')+'>'+o+'</button>';
   });
-  h+='</div>';
+  return h+'</div>';
+}
+function viewCases(){
+  const m=(v,l)=>'<button class="chip '+(C.mode===v?'on':'')+'" data-a="cmode" data-v="'+v+'">'+l+'</button>';
+  let h='<h2 class="h2">Fälle üben</h2><div class="chips">'+m('nom','Nominativ')+m('akk','Akkusativ')+m('dat','Dativ')+m('gen','Genitiv')+m('wo','Wo? / Wohin?')+m('mix','Mix')+m('sig','Signalwörter')+'</div>';
+  if(C.mode==='sig')return h+viewSig();
+  if(!C.q)newCase();
+  const q=C.q;
+  h+='<div class="chips" style="margin-top:10px"><button class="chip '+(!C.indef?'on':'')+'" data-a="cdef" data-v="d">der / die / das</button>'+
+    '<button class="chip '+(C.indef?'on':'')+'" data-a="cdef" data-v="i">ein / eine</button></div>';
+  const tag=C.mode==='mix'?'Welcher Fall?':C.mode==='wo'?'Wo? oder Wohin?':CN[q.cs]+' ('+CQ[q.cs]+')';
+  h+='<div style="margin-top:14px">'+caseCard(q,C.indef,C.ans,tag,'cans')+'</div>';
   if(C.ans)h+='<button class="btn" data-a="cnext">Weiter</button>';
   h+='<p class="small">'+C.right+' von '+C.total+' richtig'+(C.streak>1?' · '+C.streak+' in Folge':'')+'</p>';
   return h;
@@ -2086,17 +2350,17 @@ function sigAnswer(v){
   if(!G.q||G.ans)return;
   G.ans=v;G.total++;
   const st=S.cs.sig||(S.cs.sig=[0,0]);st[1]++;
+  grade(srec('g',G.q[0]),v===G.q[1]);
   if(v===G.q[1]){G.right++;st[0]++;}else G.bag.splice(Math.max(0,G.bag.length-6),0,G.q);
   markDay();save();render();
 }
-function viewSig(){
-  if(!G.q)newSig();
-  const q=G.q,done=!!G.ans;
-  let h='<div class="card qcard" style="margin-top:14px"><div class="tag">Welcher Fall folgt?</div>'+
+function sigCard(q,ans,act){
+  const done=!!ans;
+  let h='<div class="card qcard"><div class="tag">Welcher Fall folgt?</div>'+
     '<div class="noun" style="font-size:'+nounSize(q[0])+'px">'+esc(q[0])+'</div>'+
     '<div class="tr">'+esc(q[2])+'</div>';
   if(done){
-    const ok=G.ans===q[1];
+    const ok=ans===q[1];
     h+='<div class="fb '+(ok?'ok':'no')+'"><div class="row1"><span>'+(ok?'Richtig!':'Nicht ganz. Richtig ist: <b>'+CN[q[1]]+'</b>')+'</span></div>'+
       '<div class="tip"><b>'+esc(q[0])+' + '+CN[q[1]]+'</b></div><div class="tip"><i>'+esc(q[3])+'</i></div>'+
       (q[0]==='wegen'?'<div class="tip">Im Alltag hört man oft auch <i>wegen dem Regen</i> (Dativ). Schriftlich: Genitiv.</div>':'')+'</div>';
@@ -2104,13 +2368,111 @@ function viewSig(){
   h+='</div><div class="opts">';
   ['akk','dat','gen'].forEach(k=>{
     let st='';
-    if(done)st=k===q[1]?' right':(k===G.ans?' wrong':' dim');
-    h+='<button class="opt sig'+st+'" data-a="sans" data-v="'+k+'"'+(done?' disabled':'')+'>'+CN[k]+'</button>';
+    if(done)st=k===q[1]?' right':(k===ans?' wrong':' dim');
+    h+='<button class="opt sig'+st+'" data-a="'+act+'" data-v="'+k+'"'+(done?' disabled':'')+'>'+CN[k]+'</button>';
   });
-  h+='</div>';
-  if(done)h+='<button class="btn" data-a="snext">Weiter</button>';
-  h+='<p class="small">'+G.right+' von '+G.total+' richtig</p>';
+  return h+'</div>';
+}
+function viewSig(){
+  if(!G.q)newSig();
+  let h='<div style="margin-top:14px">'+sigCard(G.q,G.ans,'sans')+'</div>';
+  if(G.ans)h+='<button class="btn" data-a="snext">Weiter</button>';
+  return h+'<p class="small">'+G.right+' von '+G.total+' richtig</p>';
+}
+
+/* ---------- Wiederholen ---------- */
+const BYID={};WORDS.forEach(e=>{BYID[e.id]=e;});
+const SBYT={};SENT.forEach(s=>{SBYT[s.t]=s;});
+const GBY={};SIG.forEach(g=>{GBY[g[0]]=g;});
+// alles, was schon einmal geübt wurde (f: all | w = nur Wörter | s = nur Sätze)
+function allRec(f){
+  const out=[];
+  if(f!=='s')Object.keys(S.w).forEach(k=>{const e=BYID[k];if(e)out.push({t:'w',k:'w:'+k,e:e,s:S.w[k]});});
+  if(f!=='w'){
+    Object.keys(S.s).forEach(k=>{const i=k.lastIndexOf('#'),sn=SBYT[k.slice(0,i)];if(sn)out.push({t:'s',k:'s:'+k,sn:sn,m:k.slice(i+1),s:S.s[k]});});
+    Object.keys(S.g).forEach(k=>{const g=GBY[k];if(g)out.push({t:'g',k:'g:'+k,g:g,s:S.g[k]});});
+  }
+  return out;
+}
+function dueList(f){const t=today();return allRec(f).filter(x=>x.s.d<=t).sort((a,b)=>a.s.d-b.s.d||a.s.b-b.s.b);}
+function errList(f){return allRec(f).filter(x=>x.s.w>0&&x.s.b<3).sort((a,b)=>a.s.b-b.s.b||b.s.w-a.s.w);}
+function learnedList(f){return allRec(f).filter(x=>x.s.r>0);}
+function startReview(kind){
+  let list;
+  if(kind==='due')list=dueList(RV.f).slice(0,20);
+  else if(kind==='err')list=errList(RV.f).slice(0,20);
+  else list=learnedList(RV.f).sort((a,b)=>(a.s.l||0)-(b.s.l||0)).slice(0,40);
+  list=shuffle(list).slice(0,20);
+  if(!list.length){toast('Nichts zum Wiederholen');return;}
+  tab='wdh';
+  R={kind:kind,items:list,pos:0,ans:null,ok:false,firstOk:0,n:list.length,seen:{},requeued:{},wrongs:[],done:false};
+  render(true);
+}
+function rForm(x){return ART[x.m][CSKEY[x.sn.c]][x.sn.e.art];}
+function rAnswer(v){
+  if(!R||R.ans!==null||R.done)return;
+  const x=R.items[R.pos];
+  const ok=x.t==='w'?v===x.e.art:x.t==='s'?v===rForm(x):v===x.g[1];
+  R.ans=v;R.ok=ok;
+  const first=!R.seen[x.k];R.seen[x.k]=1;
+  grade(x.s,ok);
+  if(x.t!=='w'){const g=x.t==='g'?'sig':(x.sn.c==='wod'||x.sn.c==='woa')?'wo':x.sn.c;const st=S.cs[g]||(S.cs[g]=[0,0]);st[1]++;if(ok)st[0]++;}
+  if(ok){if(first)R.firstOk++;}
+  else{
+    if(R.wrongs.indexOf(x)<0)R.wrongs.push(x);
+    if(!R.requeued[x.k]){R.requeued[x.k]=1;R.items.splice(Math.min(R.items.length,R.pos+4),0,x);}
+  }
+  markDay();save();render();
+}
+function rNext(){if(!R)return;R.pos++;R.ans=null;if(R.pos>=R.items.length)R.done=true;render();}
+function viewReview(){
+  if(R)return R.done?viewRResult():viewRItem();
+  const f=RV.f,all=allRec(f),t=today();
+  const ch=(v,l)=>'<button class="chip '+(f===v?'on':'')+'" data-a="rf" data-v="'+v+'">'+l+'</button>';
+  let h='<h2 class="h2">Wiederholen</h2><div class="chips">'+ch('all','Alles')+ch('w','Nur Wörter')+ch('s','Nur Sätze')+'</div>';
+  if(!all.length){
+    return h+'<div class="card" style="margin-top:14px"><h3>Noch nichts zum Wiederholen</h3>'+
+      '<p class="lead">Übe zuerst bei <b>Üben</b> oder <b>Fälle</b>. Alles, was du dort machst, kommt hier automatisch wieder: nach 1, 3, 7, 14 und 30 Tagen.</p></div>';
+  }
+  const due=all.filter(x=>x.s.d<=t).length,err=errList(f).length,learned=learnedList(f).length;
+  const tomorrow=all.filter(x=>x.s.d===t+1).length,week=all.filter(x=>x.s.d>t&&x.s.d<=t+7).length;
+  const aufbau=all.filter(x=>x.s.b<=2).length,fest=all.filter(x=>x.s.b===3||x.s.b===4).length,sicher=all.filter(x=>x.s.b>=5).length;
+  h+='<div class="card duecard"><div class="dnum"><b>'+due+'</b><span>heute fällig</span></div>'+
+    (due?'<button class="btn gold" data-a="rstart" data-v="due">Jetzt wiederholen'+(due>20?' (20 von '+due+')':'')+'</button>'
+        :'<p class="lead">Heute ist nichts fällig. Morgen: '+tomorrow+'.</p>')+
+    '<p class="small" style="text-align:left">Was du geübt hast, kommt nach 1, 3, 7, 14 und 30 Tagen wieder. Fehler kommen noch am selben Tag zurück.</p></div>'+
+    '<div class="stats"><div class="stat"><b>'+aufbau+'</b><span>im Aufbau</span></div><div class="stat"><b>'+fest+'</b><span>gefestigt</span></div><div class="stat"><b>'+sicher+'</b><span>sicher</span></div></div>'+
+    '<div class="card"><h3>Frei üben</h3>'+
+    '<div class="rrow"><div><b>Meine Fehler</b><span>'+err+' Übungen mit Fehlern</span></div><button class="btn ghost small-btn" data-a="rstart" data-v="err"'+(err?'':' disabled')+'>Üben</button></div>'+
+    '<div class="rrow"><div><b>Alles Gelernte</b><span>'+learned+' Übungen gemischt, älteste zuerst</span></div><button class="btn ghost small-btn" data-a="rstart" data-v="all"'+(learned?'':' disabled')+'>Üben</button></div></div>'+
+    '<p class="small">Morgen fällig: '+tomorrow+' · in den nächsten 7 Tagen: '+week+'</p>';
   return h;
+}
+function viewRItem(){
+  const x=R.items[R.pos],done=R.ans!==null;
+  const pr=Math.round(R.pos/R.items.length*100);
+  let h='<div class="qtop"><button class="icon" data-a="rquit" aria-label="Beenden">'+ic(IC.close)+'</button>'+
+    '<div class="bar"><i style="width:'+pr+'%"></i></div><div class="pill">'+Math.min(R.pos+1,R.items.length)+' / '+R.items.length+'</div></div>';
+  if(x.t==='w')h+=wordCard(x.e,done?R.ans:null,R.ok,'rans','<span class="bdg">Welcher Artikel?</span>');
+  else if(x.t==='s')h+=caseCard(caseQ(x.sn,x.m),x.m==='i',done?R.ans:null,'Welcher Fall?','rans');
+  else h+=sigCard(x.g,done?R.ans:null,'rans');
+  if(done)h+='<button class="btn" data-a="rnext">Weiter</button>';
+  return h;
+}
+function rRow(x){
+  if(x.t==='w')return rowSimple(x.e);
+  if(x.t==='s')return '<div class="row"><div class="rw"><div class="w" style="font-size:16px">'+esc(fillSent(x.sn,x.m))+'</div><div class="t">'+esc(x.sn.h)+'</div></div></div>';
+  return '<div class="row"><div class="rw"><div class="w" style="font-size:16px">'+esc(x.g[0])+' + '+CN[x.g[1]]+'</div><div class="t">'+esc(x.g[3])+'</div></div></div>';
+}
+function viewRResult(){
+  const r=R.firstOk/R.n,left=dueList(RV.f).length;
+  const msg=r>=.9?'Sehr gut! Das sitzt.':r>=.6?'Gut gemacht!':'Gut, dass du wiederholst. Die Fehler kommen bald wieder.';
+  let h='<div class="card res"><div class="big">'+R.firstOk+'/'+R.n+'</div><p>'+msg+'</p>';
+  if(R.wrongs.length)h+='<div class="mist"><h3>Noch einmal ansehen</h3>'+R.wrongs.map(rRow).join('')+'</div>';
+  h+='</div>';
+  if(R.kind==='due'&&left)h+='<button class="btn gold" style="margin-top:14px" data-a="rstart" data-v="due">Weiter wiederholen ('+left+' fällig)</button>';
+  else if(R.kind!=='due')h+='<button class="btn gold" style="margin-top:14px" data-a="rstart" data-v="'+R.kind+'">Noch eine Runde</button>';
+  return h+'<button class="btn ghost" style="margin-top:10px" data-a="rquit">Fertig</button>';
 }
 
 /* ---------- Wörter ---------- */
@@ -2119,6 +2481,7 @@ function filtered(){
   return WORDS.filter(e=>{
     if(W.grp!=='all'&&e.grp!==W.grp)return false;
     if(W.tag==='flag'&&!S.flags[e.id])return false;
+    if(W.tag==='seen'&&!S.w[e.id])return false;
     if(W.tag==='at'&&!e.at)return false;
     if(W.tag==='de'&&!e.de)return false;
     if(W.tag==='b2'&&!e.b2)return false;
@@ -2126,27 +2489,32 @@ function filtered(){
     return (e.w+' '+e.en+' '+e.uk).toLowerCase().indexOf(q)>=0;
   });
 }
+function lvDot(e){const s=S.w[e.id];if(!s)return '';return s.b>=3?'<span class="lv on" title="sicher gelernt"></span>':'<span class="lv" title="geübt"></span>';}
 function wordList(){
   const l=filtered();
   if(!l.length)return '<p class="small">Keine Treffer.</p>';
-  return '<p class="small" style="margin:0 0 8px">'+l.length+' Wörter</p><div class="card" style="padding:6px 16px">'+l.map(e=>
-    '<div class="row"><div class="rw"><div class="w"><span class="a c-'+e.art+'">'+e.art+'</span>'+esc(e.w)+marks(e)+'</div>'+
+  const show=l.slice(0,W.lim);
+  return '<p class="small" style="margin:0 0 8px">'+l.length+' Wörter</p><div class="card" style="padding:6px 16px">'+show.map(e=>
+    '<div class="row"><div class="rw"><div class="w"><span class="a c-'+e.art+'">'+e.art+'</span>'+esc(e.w)+marks(e)+lvDot(e)+'</div>'+
     '<div class="t">'+esc(e.en)+'</div><div class="t">'+esc(e.uk)+'</div>'+
     (e.pair?'<div class="t pr">'+(e.pair.at?'Österreich: ':e.at?'Deutschland: ':e.pair.de?'Deutschland: ':'Österreich: ')+e.pair.art+' '+esc(e.pair.w)+'</div>':'')+'</div>'+
     (canSpeak?'<button class="icon" data-a="say" data-v="'+e.i+'" aria-label="Vorlesen">'+ic(IC.speaker,20)+'</button>':'')+
     '<button class="icon'+(S.flags[e.id]?' on':'')+'" data-a="flag" data-v="'+e.i+'" aria-label="Markieren">'+ic(IC.flag,20)+'</button></div>'
-  ).join('')+'</div>';
+  ).join('')+'</div>'+(l.length>show.length?'<button class="btn ghost" style="margin-top:12px" data-a="wmore">Weitere anzeigen (noch '+(l.length-show.length)+')</button>':'');
 }
 function viewWords(){
-  const nf=Object.keys(S.flags).filter(k=>S.flags[k]).length;
+  const vs=(v,l)=>'<button class="'+(W.view===v?'on':'')+'" data-a="wview" data-v="'+v+'">'+l+'</button>';
+  let h='<h2 class="h2">'+(W.view==='rules'?'Regeln':'Wörter')+'</h2><div class="seg" style="margin-bottom:14px">'+vs('list','Wörter')+vs('rules','Regeln')+'</div>';
+  if(W.view==='rules')return h+viewRules();
+  const nf=WORDS.filter(e=>S.flags[e.id]).length;
   const g=(v,l)=>'<button class="'+(W.grp===v?'on':'')+'" data-a="wgrp" data-v="'+v+'">'+l+'</button>';
   const t=(v,l)=>'<button class="chip '+(W.tag===v?'on':'')+'" data-a="wtag" data-v="'+v+'">'+l+'</button>';
-  let h='<h2 class="h2">Wörter</h2><div class="card"><input id="q" class="search" type="search" placeholder="Suchen: Wort, English, Українська" value="'+esc(W.q)+'" autocomplete="off">'+
-    '<div class="seg" style="margin-top:12px">'+g('all','Alle')+g('alltag','Alltag')+g('job','Beruf')+'</div>'+
-    '<div class="chips" style="margin-top:12px">'+t('at',flag('at')+' Österreich')+t('de',flag('de')+' Deutschland')+t('b2','B2')+t('flag','Markiert ('+nf+')')+
+  h+='<div class="card"><input id="q" class="search" type="search" placeholder="Suchen: Wort, English, Українська" value="'+esc(W.q)+'" autocomplete="off">'+
+    '<div class="seg seg4" style="margin-top:12px">'+g('all','Alle')+GROUPS.map(x=>g(x[0],x[2])).join('')+'</div>'+
+    '<div class="chips" style="margin-top:12px">'+t('seen','Geübt')+t('at',flag('at')+' Österreich')+t('de',flag('de')+' Deutschland')+t('b2','B2')+t('flag','Markiert ('+nf+')')+
     (nf?'<button class="chip" data-a="copyflags">Liste kopieren</button>':'')+'</div>'+
     (W.copy?'<textarea readonly id="cp">'+esc(W.copy)+'</textarea>':'')+
-    '<p class="small" style="text-align:left">Ohne Flagge: überall üblich. Fehler gefunden? Tippe die Fahne rechts, um ein Wort zu markieren.</p></div>'+
+    '<p class="small" style="text-align:left">Ohne Flagge: überall üblich. Punkt: geübt, voller Punkt: sicher gelernt. Fehler gefunden? Tippe die Fahne rechts, um ein Wort zu markieren.</p></div>'+
     '<div id="wl" style="margin-top:14px">'+wordList()+'</div>';
   return h;
 }
@@ -2161,26 +2529,25 @@ function viewRules(){
   const tb=rows=>'<table class="tbl"><thead><tr><th></th><th class="c-der">maskulin</th><th class="c-die">feminin</th><th class="c-das">neutrum</th></tr></thead><tbody>'+
     rows.map(r=>'<tr><td>'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td><td>'+r[3]+'</td></tr>').join('')+'</tbody></table>';
   const ex=PAIRS.slice(0,6).map(p=>'<p>'+flag('de')+' '+p[0].art+' '+esc(p[0].w)+' &nbsp;·&nbsp; '+flag('at')+' '+p[1].art+' '+esc(p[1].w)+'</p>').join('');
-  return '<h2 class="h2">Regeln</h2>'+
-    '<div class="card"><h3>Bestimmter Artikel</h3>'+tb([['Nominativ','der','die','das'],['Akkusativ','<b>den</b>','die','das'],['Dativ','<b>dem</b>','<b>der</b>','<b>dem</b>'],['Genitiv','<b>des</b>','<b>der</b>','<b>des</b>']])+
+  return '<div class="card"><h3>Bestimmter Artikel</h3>'+tb([['Nominativ','der','die','das'],['Akkusativ','<b>den</b>','die','das'],['Dativ','<b>dem</b>','<b>der</b>','<b>dem</b>'],['Genitiv','<b>des</b>','<b>der</b>','<b>des</b>']])+
     '<h3 style="margin-top:18px">Unbestimmter Artikel</h3>'+tb([['Nominativ','ein','eine','ein'],['Akkusativ','<b>einen</b>','eine','ein'],['Dativ','<b>einem</b>','<b>einer</b>','<b>einem</b>'],['Genitiv','<b>eines</b>','<b>einer</b>','<b>eines</b>']])+
     '<p class="small" style="text-align:left">Fett = Form ändert sich. Im Akkusativ ändert sich nur maskulin.</p></div>'+
     '<div class="card rl"><h3>Welcher Fall?</h3>'+
     '<p><b>Nominativ</b> (Wer? Was?): das Subjekt. <i>Der Tisch ist neu.</i></p>'+
     '<p><b>Akkusativ</b> (Wen? Was?): das Objekt nach den meisten Verben (brauchen, sehen, suchen, kaufen) und nach <b>für, durch, ohne, gegen, um, bis</b>.</p>'+
     '<p><b>Dativ</b> (Wem?): nach <b>aus, bei, mit, nach, seit, von, zu, gegenüber, ab, außer</b> und nach Verben wie helfen, gehören, danken, gefallen, antworten.</p>'+
-    '<p><b>Genitiv</b> (Wessen?): zeigt, wem etwas gehört (<i>das Auto des Kollegen</i>) und steht nach <b>wegen, während, trotz, statt, innerhalb, außerhalb, aufgrund</b>.</p>'+
+    '<p><b>Genitiv</b> (Wessen?): zeigt, wem etwas gehört (<i>das Auto des Nachbarn</i>) und steht nach <b>wegen, während, trotz, statt, innerhalb, außerhalb, aufgrund</b>.</p>'+
     '<p><b>Wechselpräpositionen</b> (in, an, auf, hinter, neben, über, unter, vor, zwischen): <b>Wo?</b> gibt Dativ, <b>Wohin?</b> gibt Akkusativ.<br><i>Ich bin in der Küche. Ich gehe in die Küche.</i></p></div>'+
     '<div class="card rl"><h3>Genitiv: das Nomen ändert sich</h3>'+
     '<p>Maskulin und Neutrum bekommen <b>-s</b> oder <b>-es</b>: des Projekt<b>s</b>, des Tisch<b>es</b>, des Hau<b>ses</b>, des Ergebnis<b>ses</b>.</p>'+
     '<p>Kurze Wörter und Wörter auf -s, -ß, -x, -z, -sch bekommen meist <b>-es</b>.</p>'+
-    '<p>Feminin bleibt gleich: <i>die Meinung der Chefin</i>.</p>'+
-    '<p>N-Deklination: des Kolleg<b>en</b>, des Kund<b>en</b>, des Nachbar<b>n</b>.</p>'+
+    '<p>Feminin bleibt gleich: <i>die Tasche der Lehrerin</i>.</p>'+
+    '<p>N-Deklination: des Jung<b>en</b>, des Kund<b>en</b>, des Nachbar<b>n</b>.</p>'+
     '<p class="small" style="text-align:left">Im Alltag (besonders in Österreich) hört man oft <i>wegen dem Regen</i>. Schriftlich und im Beruf: <i>wegen des Regens</i>.</p></div>'+
     '<div class="card rl"><h3>Präposition + Artikel = ein Wort</h3>'+
     '<p>in + dem = <b>im</b> · in + das = <b>ins</b> · an + dem = <b>am</b> · an + das = <b>ans</b></p>'+
     '<p>zu + dem = <b>zum</b> · zu + der = <b>zur</b> · von + dem = <b>vom</b> · bei + dem = <b>beim</b></p>'+
-    '<p><i>Ich gehe zum Arzt. Ich bin im Büro. Ich kaufe Brot beim Bäcker.</i></p></div>'+
+    '<p><i>Ich gehe zum Arzt. Ich bin im Park. Ich kaufe Brot beim Bäcker.</i></p></div>'+
     '<div class="card rl"><h3>Endungen helfen</h3>'+
     '<p><span class="c-die"><b>die</b></span>: -ung, -heit, -keit, -schaft, -tät, -ion, -enz, -ur, -ik, -ie, -in (Frauen), meist -e</p>'+
     '<p><span class="c-das"><b>das</b></span>: -chen, -lein, -ment, -nis, -um</p>'+
@@ -2204,9 +2571,9 @@ function viewProgress(){
     '<div class="stat"><b>'+st.seen+'</b><span>von '+WORDS.length+' geübt</span></div>'+
     '<div class="stat"><b>'+st.acc+'%</b><span>richtig</span></div></div>'+
     '<div class="card"><h3>Themen</h3><p class="small" style="text-align:left;margin:6px 0 4px">Hell: geübt. Dunkel: sicher (mehrmals in Folge richtig). Sicher gelernt: '+sure+' von '+WORDS.length+'.</p>';
-  [['alltag','','Alltag'],['job','allg','Beruf: allgemein'],['job','proj','Beruf: Projekt, Assistenz & Scrum']].forEach(sec=>{
-    h+='<div class="sub">'+sec[2]+'</div>';
-    Object.keys(CATS).filter(k=>CATS[k][1]===sec[0]&&CATS[k][2]===sec[1]).forEach(k=>{
+  GROUPS.forEach(sec=>{
+    h+='<div class="sub">'+sec[1]+'</div>';
+    Object.keys(CATS).filter(k=>CATS[k][1]===sec[0]).forEach(k=>{
       const l=WORDS.filter(e=>e.cat===k);
       h+=progRow(CATS[k][0],l.filter(e=>S.w[e.id]).length,l.filter(e=>S.w[e.id]&&S.w[e.id].b>=3).length,l.length);
     });
@@ -2217,21 +2584,26 @@ function viewProgress(){
       '<div class="bar"><i style="width:'+(c[1]?Math.round(100*c[0]/c[1]):0)+'%"></i></div></div>';
   h+='<div class="card"><h3>Fälle</h3>'+rows.map(r=>pc(r[1],S.cs[r[0]]||[0,0])).join('')+'</div>';
   h+='<div class="card"><h3>'+flag('at')+' Österreich und '+flag('de')+' Deutschland</h3>'+pc('Wortpaare',S.pr||[0,0])+'</div>';
+  {const all=allRec('all'),t=today();
+   const n=k=>all.filter(x=>x.t===k).length;
+   h+='<div class="card"><h3>Wiederholen</h3>'+
+     '<p class="small" style="text-align:left;margin:6px 0 10px">Heute fällig: '+all.filter(x=>x.s.d<=t).length+' · Wörter: '+n('w')+' · Sätze: '+n('s')+' · Signalwörter: '+n('g')+'</p>'+
+     [[0,2,'im Aufbau'],[3,4,'gefestigt'],[5,5,'sicher']].map(z=>{const c=all.filter(x=>x.s.b>=z[0]&&x.s.b<=z[1]).length;
+       return '<div class="prog"><span>'+z[2]+'</span><span class="n">'+c+'</span><div class="bar"><i style="width:'+(all.length?Math.round(100*c/all.length):0)+'%"></i></div></div>';}).join('')+'</div>';}
   const hard=WORDS.filter(e=>S.w[e.id]&&S.w[e.id].w>0&&S.w[e.id].b<3).sort((a,b)=>S.w[b.id].w-S.w[a.id].w).slice(0,10);
   if(hard.length)h+='<div class="card" style="padding:6px 16px"><h3 style="margin:12px 0 2px">Schwierige Wörter</h3>'+hard.map(rowSimple).join('')+'</div>';
-  const nj=WORDS.filter(e=>e.grp==='job').length,np=WORDS.filter(e=>e.sub==='proj').length;
   h+='<div class="card rl"><h3>Version '+VERSION+' ('+BUILD+')</h3>'+
-    '<p><b>Wörter:</b> '+WORDS.length+' Nomen, alle mit Englisch und Ukrainisch. '+nj+' davon für den Beruf ('+Math.round(100*nj/WORDS.length)+' %), '+np+' davon für Projekt, Assistenz und Scrum.</p>'+
-    '<p><b>Neu:</b> Genitiv, Signalwörter und Wortpaare Österreich und Deutschland.</p>'+
+    '<p><b>Wörter:</b> '+WORDS.length+' Nomen für Alltag und die B1-Prüfung, alle mit Englisch und Ukrainisch. Keine Berufs- und Firmenwörter mehr.</p>'+
+    '<p><b>Neu:</b> Wiederholen nach 1, 3, 7, 14 und 30 Tagen. Neue Themen: Verkehr, Bank und Post, Feste. Die Regeln findest du jetzt bei Wörter.</p>'+
     '<p><b>Flaggen:</b> '+flag('at')+' österreichische und '+flag('de')+' deutsche Wörter. <b>B2</b> markiert schwierigere Wörter.</p>'+
-    '<p><b>Fälle:</b> '+SENT.length+' Sätze. Zusammenziehungen wie <i>zum, im, beim</i> werden gezeigt.</p></div>';
+    '<p><b>Fälle:</b> '+SENT.length+' Sätze aus dem Alltag, mit <i>zum, im, beim</i> usw.</p></div>';
   h+='<button class="btn ghost" style="margin-top:14px" data-a="reset">'+(resetAsk?'Wirklich alles löschen? Nochmal tippen':'Fortschritt zurücksetzen')+'</button>';
   return h;
 }
 
 /* ---------- Rendern ---------- */
 function render(scroll){
-  const v={ueben:viewPractice,faelle:viewCases,woerter:viewWords,regeln:viewRules,fortschritt:viewProgress}[tab];
+  const v={ueben:viewPractice,faelle:viewCases,wdh:viewReview,woerter:viewWords,fortschritt:viewProgress}[tab]||viewPractice;
   const y=window.scrollY;
   $('#app').innerHTML=v();
   $('#nav').innerHTML=TABS.map(t=>'<button class="tab'+(t[0]===tab?' on':'')+'" data-a="tab" data-v="'+t[0]+'">'+ic(IC[t[0]])+'<span>'+t[1]+'</span></button>').join('');
@@ -2257,13 +2629,21 @@ const ACT={
   cnext:()=>{newCase();render();},
   sans:v=>sigAnswer(v),
   snext:()=>{newSig();render();},
-  wgrp:v=>{W.grp=v;render();},
-  wtag:v=>{W.tag=W.tag===v?'':v;render();},
+  wgrp:v=>{W.grp=v;W.lim=150;render();},
+  wview:v=>{W.view=v;render(true);},
+  wmore:()=>{W.lim+=150;render();},
+  rgo:()=>startReview('due'),
+  rstart:v=>startReview(v),
+  rans:v=>rAnswer(v),
+  rnext:()=>rNext(),
+  rquit:()=>{R=null;render(true);},
+  rf:v=>{RV.f=v;render();},
+  wtag:v=>{W.tag=W.tag===v?'':v;W.lim=150;render();},
   flag:v=>{const e=WORDS[+v];if(S.flags[e.id])delete S.flags[e.id];else S.flags[e.id]=1;save();render();},
   copyflags:()=>copyFlags(),
   reset:()=>{
     if(!resetAsk){resetAsk=true;render();return;}
-    const f=S.flags;S=defaults();S.flags=f;save();resetAsk=false;Q=null;P=null;toast('Zurückgesetzt');render();
+    const f=S.flags;S=defaults();S.flags=f;save();resetAsk=false;Q=null;P=null;R=null;toast('Zurückgesetzt');render();
   }
 };
 document.addEventListener('click',ev=>{
@@ -2276,13 +2656,13 @@ document.addEventListener('change',ev=>{
   if(ev.target.id==='cat'){cfg.cat=ev.target.value;render();}
 });
 document.addEventListener('input',ev=>{
-  if(ev.target.id==='q'){W.q=ev.target.value;const l=$('#wl');if(l)l.innerHTML=wordList();}
+  if(ev.target.id==='q'){W.q=ev.target.value;W.lim=150;const l=$('#wl');if(l)l.innerHTML=wordList();}
 });
 document.addEventListener('keydown',ev=>{
   if(ev.key!=='Enter')return;
   const t=document.activeElement&&document.activeElement.tagName;
   if(t==='BUTTON'||t==='INPUT'||t==='SELECT'||t==='TEXTAREA')return;
-  const b=document.querySelector('[data-a=next],[data-a=cnext],[data-a=pnext],[data-a=snext]');
+  const b=document.querySelector('[data-a=next],[data-a=cnext],[data-a=pnext],[data-a=snext],[data-a=rnext]');
   if(b){ev.preventDefault();b.click();}
 });
 render(true);

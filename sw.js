@@ -1,5 +1,5 @@
-// Der Die Das (Ukrainian edition) – service worker v1.2. Network first, cache as offline fallback.
-const CACHE = 'derdiedas-v1.2';
+// Der Die Das (Ukrainian edition) – service worker v1.3. Network first, cache as offline fallback.
+const CACHE = 'derdiedas-v1.3';
 const PREFIX = 'derdiedas-v';   // only clean up this app's own caches
 const FILES = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png'];
 self.addEventListener('install', e => {
